@@ -1,0 +1,1257 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/chairs/protos/Chair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/plants/protos/PottedTree.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "../protos/ServiceRobot.proto"
+
+WorldInfo {
+  info [
+    "🏪 Professional Restaurant Simulation with Dynamic Customers"
+    "🤖 Multiple Self-Balancing Service Robots"
+    "🍽️ Real-time Order Management System"
+    "👥 Dynamic Customer Spawning and AI"
+  ]
+  title "Professional Restaurant Service - Complete Simulation"
+  basicTimeStep 8
+  contactProperties [
+    ContactProperties {
+      material1 "wheel"
+      material2 "floor"
+      coulombFriction [
+        1.2
+      ]
+      bounce 0.05
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.32992608867465345 0.3924841715911562 0.858548164672343 1.5496828389685766
+  position -14.047302964437762 -29.229783534732444 34.04006188239367
+  follow "robot1"
+  followType "Pan and Tilt Shot"
+}
+TexturedBackground {
+  texture "noon_building_overcast"
+}
+TexturedBackgroundLight {
+  luminosity 1.5
+}
+RectangleArena {
+  floorSize 25 20
+  floorTileSize 1 1
+  floorAppearance PBRAppearance {
+    baseColor 0.94 0.92 0.88
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/parquetry.jpg"
+      ]
+    }
+    roughness 0.3
+    metalness 0.1
+  }
+  wallHeight 0.01
+}
+Wall {
+  translation -12.5 -7 0
+  size 0.3 6 3
+  appearance PBRAppearance {
+    baseColor 0.85 0.82 0.78
+    roughness 0.5
+  }
+}
+Wall {
+  translation -12.5 7 0
+  size 0.3 6 3
+  appearance PBRAppearance {
+    baseColor 0.85 0.82 0.78
+    roughness 0.5
+  }
+}
+Wall {
+  translation 12.5 0 0
+  size 0.3 20 3
+  appearance PBRAppearance {
+    baseColor 0.85 0.82 0.78
+    roughness 0.5
+  }
+}
+Wall {
+  translation 0 -10 0
+  rotation 0 0 1 1.5708
+  size 0.3 25 3
+  appearance PBRAppearance {
+    baseColor 0.85 0.82 0.78
+    roughness 0.5
+  }
+}
+Wall {
+  translation 0 10 0
+  rotation 0 0 1 1.5708
+  size 0.3 25 3
+  appearance PBRAppearance {
+    baseColor 0.85 0.82 0.78
+    roughness 0.5
+  }
+}
+Wall {
+  translation 8 0 0
+  rotation 0 0 1 1.5708
+  size 0.3 12 3
+  appearance PBRAppearance {
+    baseColor 0.75 0.72 0.68
+    roughness 0.6
+  }
+}
+DEF KITCHEN_SIGN Solid {
+  translation 8 0 2.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.6 0.9
+        roughness 0.2
+        metalness 0.8
+      }
+      geometry Box {
+        size 0.05 2 0.4
+      }
+    }
+    Pose {
+      translation 0 0 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            emissiveColor 1 1 1
+          }
+        }
+      ]
+    }
+  ]
+  name "kitchen_sign"
+}
+DEF ENTRANCE_SIGN Solid {
+  translation -12 0 2.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9 0.6 0.2
+        metalness 0.7
+        emissiveColor 0.3 0.15 0.05
+      }
+      geometry Box {
+        size 0.05 3 0.5
+      }
+    }
+    Pose {
+      translation 0.1 0 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            emissiveColor 1 1 1
+          }
+        }
+      ]
+    }
+  ]
+  name "entrance_sign"
+}
+Solid {
+  translation -11 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.4 0.2
+        roughness 0.6
+        metalness 0.2
+      }
+      geometry Box {
+        size 1.5 2 1
+      }
+    }
+  ]
+  name "reception_desk"
+  boundingObject Box {
+    size 1.5 2 1
+  }
+}
+ServiceRobot {
+  hidden position_0_0 -1137.3799558811775
+  hidden position_0_1 -276.0376818898778
+  hidden position_0_2 -0.5000003191654085
+  hidden position_0_3 0.4948248846475758
+  hidden linearVelocity_0 -0.04401948884066473 -0.08144491686800043 -0.02228961705356122
+  hidden angularVelocity_0 -0.16053219535087135 -0.25483836305755975 0.5479551084170915
+  hidden rotation_6 -0.9962042156597773 0.06155155779569276 0.061551331704611786 4.708582309761683
+  hidden linearVelocity_6 0.045102469755378904 -0.18768912568221122 -0.04583804465034811
+  hidden angularVelocity_6 4.9091364139325835 2.692111309658708 0.9602274809741297
+  hidden rotation_7 0.9569644489721284 0.20520642382402485 0.205205670060126 1.6147748532130206
+  hidden linearVelocity_7 -0.060759206799373536 -0.01301433608963061 0.004860623060628094
+  hidden angularVelocity_7 0.4190010757233176 0.08954354007722753 0.602742555138333
+  hidden rotation_8 0 0 -1 0.5000003191654084
+  hidden position_8_0 -0.4000000603719407
+  hidden linearVelocity_8 0.033296111677931284 -0.0805195397187361 0.00022301885643392222
+  hidden angularVelocity_8 -0.16142557560944115 -0.2562482832218108 0.550991488593401
+  hidden rotation_9 0 0 -1 0.40000006037194086
+  hidden linearVelocity_9 0.10334502000283928 -0.06423936818369591 0.02846441603992801
+  hidden angularVelocity_9 -0.16142612237944742 -0.25624606620176626 0.5509895616044439
+  hidden rotation_10 0 0 0.9999999999999999 0.49482488464757546
+  hidden position_10_0 -0.4413013777920767
+  hidden linearVelocity_10 -0.09162595388140157 0.0989841595809196 0.0513972050744789
+  hidden angularVelocity_10 -0.209956199442366 -0.2843518606539525 0.5471645777727568
+  hidden rotation_11 0 0 -1 0.4413013777920762
+  hidden linearVelocity_11 -0.029501395975317368 0.1398609211495187 0.019387320469883895
+  hidden angularVelocity_11 0.5105973454452553 0.13396818596116478 0.6046227137506651
+  translation -7.614871048489545 7.621412571986309 0.30083051882262674
+  rotation -0.7856404279134473 0.4589322678645969 0.41490998004462754 -1.867771005983216
+  name "robot1"
+  controller "restaurant_controller"
+}
+ServiceRobot {
+  hidden position_0_0 -8347.819855123073
+  hidden position_0_1 -5292.967935735972
+  hidden position_0_2 -26569.29310216936
+  hidden position_0_3 44092.296916888874
+  hidden linearVelocity_0 56.35687238737444 -15.102096474138689 5.775535077530967
+  hidden angularVelocity_0 -2847.372269302701 5568.250039785922 -7732.021358773088
+  hidden rotation_6 -0.21663522291841544 -0.6903161163588987 -0.6903135806908741 3.5682683497018663
+  hidden linearVelocity_6 -1755.6129186257858 -1497.5592730741278 1692.4574317751128
+  hidden angularVelocity_6 1571.9806949184328 9040.953836237566 3973.667125694474
+  hidden rotation_7 0.21935007085002137 -0.6898873251803288 -0.6898847910873392 2.709733599635943
+  hidden linearVelocity_7 593.974103458042 836.978716434367 -2864.761471059824
+  hidden angularVelocity_7 -3461.7900386898355 -1888.272677207481 -9189.691835123718
+  hidden rotation_8 0 0 -1 3.985623414066838
+  hidden position_8_0 -399.35629854677916
+  hidden linearVelocity_8 103.79766403442778 -190.56198542011407 1048.15906579076
+  hidden angularVelocity_8 1496.7254901110912 9137.304960576364 3777.495316301303
+  hidden rotation_9 0 0 0.9999999999999999 2.7675611127143767
+  hidden linearVelocity_9 870.1123301221864 825.7186126988236 7900.189901838456
+  hidden angularVelocity_9 9720.682981979222 2005.171658598815 -1219.6757697894998
+  hidden rotation_10 0 0 -1 3.0975688974639293
+  hidden position_10_0 -5853.593965049567
+  hidden linearVelocity_10 2224.949129601605 2035.6807165569762 -1466.0564041536682
+  hidden angularVelocity_10 -3498.8391656826743 40.05029366013716 -9367.8450278953
+  hidden rotation_11 0 0 0.9999999999999999 2.334741241808019
+  hidden linearVelocity_11 -323.45175710784815 2057.3954094810706 -744.5293716687074
+  hidden angularVelocity_11 1688.2731224384154 -2882.6737495590937 9425.493404467214
+  translation -4395.0617361739205 5528.094495657399 832.8770908781605
+  rotation -0.687015028171494 -0.2983549488274587 -0.6625667329233229 1.5131575541325162
+  name "robot2"
+  controller "restaurant_controller"
+}
+ServiceRobot {
+  hidden position_0_0 -116.21732497483276
+  hidden position_0_1 -131.93927988407106
+  hidden position_0_2 -0.5012746966205198
+  hidden position_0_3 0.49993269299765375
+  hidden linearVelocity_0 0.019796222274492473 -0.0020063593908489405 -0.018294776850339894
+  hidden angularVelocity_0 -0.04282794565736122 -0.15838521694217803 -0.07502766300616244
+  hidden rotation_6 0.0076379757194152634 -0.7070874536850881 -0.7070848564126149 3.1263170553084705
+  hidden linearVelocity_6 0.030243945368450237 -0.005613514521057968 -0.017328055256759768
+  hidden angularVelocity_6 0.4835234404849492 2.4572313567936845 -0.08511612613989056
+  hidden rotation_7 -0.9999855162411113 -0.0038057466022275864 -0.0038057326229654193 4.712370823315808
+  hidden linearVelocity_7 0.057479968090734204 -0.011164447311165938 -0.020721454271253624
+  hidden angularVelocity_7 0.5128085723204046 2.6028132459543016 -0.08559995154230646
+  hidden rotation_8 0 0 -1 0.50127469662052
+  hidden position_8_0 -0.4000000535333017
+  hidden linearVelocity_8 -0.03422151181858014 -0.0030537893950518032 0.016258886001855866
+  hidden angularVelocity_8 -0.04579248209407363 -0.1728439907008343 -0.07539410321043793
+  hidden rotation_9 0 0 -1 0.4000000535333015
+  hidden linearVelocity_9 -0.0190233446399626 -0.014697041706406276 0.03372736293879629
+  hidden angularVelocity_9 -0.045792151853394 -0.17284395337982408 -0.0753938411151196
+  hidden rotation_10 0 0 0.9999999999999999 0.4999326929976535
+  hidden position_10_0 -0.4000000910336591
+  hidden linearVelocity_10 -0.025036332448697716 -0.004078921900778437 0.011777454651442304
+  hidden angularVelocity_10 -0.043207460574125764 -0.15996583870656791 -0.0754320244462206
+  hidden rotation_11 0 0 -1 0.40000009103365897
+  hidden linearVelocity_11 -0.03187973141619019 -0.012675319972648737 0.03393143664324605
+  hidden angularVelocity_11 -0.043207373580488345 -0.15996520336938588 -0.07543153468073246
+  translation -0.8422764402439052 0.32384822428845356 0.27504902755267896
+  rotation 0.9900679365883047 -0.08995018413072833 -0.10804834711657928 1.5788743716535394
+  name "robot3"
+  controller "restaurant_controller"
+}
+Table {
+  translation -7 -7 0
+  name "table1"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 -6.4 0
+  name "chair_t1_1"
+}
+Chair {
+  translation -7 -7.6 0
+  rotation 0 0 1 3.14159
+  name "chair_t1_2"
+}
+Table {
+  translation -7 -4 0
+  name "table2"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 -3.4 0
+  name "chair_t2_1"
+}
+Chair {
+  translation -7 -4.6 0
+  rotation 0 0 1 3.14159
+  name "chair_t2_2"
+}
+Table {
+  translation -4 -7 0
+  name "table3"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 -6.2 0
+  name "chair_t3_1"
+}
+Chair {
+  translation -4 -7.8 0
+  rotation 0 0 1 3.14159
+  name "chair_t3_2"
+}
+Chair {
+  translation -3.2 -7 0
+  rotation 0 0 1 1.5708
+  name "chair_t3_3"
+}
+Chair {
+  translation -4.8 -7 0
+  rotation 0 0 1 -1.5708
+  name "chair_t3_4"
+}
+Table {
+  translation -4 -4 0
+  name "table4"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 -3.2 0
+  name "chair_t4_1"
+}
+Chair {
+  translation -4 -4.8 0
+  rotation 0 0 1 3.14159
+  name "chair_t4_2"
+}
+Chair {
+  translation -3.2 -4 0
+  rotation 0 0 1 1.5708
+  name "chair_t4_3"
+}
+Chair {
+  translation -4.8 -4 0
+  rotation 0 0 1 -1.5708
+  name "chair_t4_4"
+}
+Table {
+  translation -7 4 0
+  name "table5"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 4.6 0
+  name "chair_t5_1"
+}
+Chair {
+  translation -7 3.4 0
+  rotation 0 0 1 3.14159
+  name "chair_t5_2"
+}
+Table {
+  translation -7 7 0
+  name "table6"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 7.6 0
+  name "chair_t6_1"
+}
+Chair {
+  translation -7 6.4 0
+  rotation 0 0 1 3.14159
+  name "chair_t6_2"
+}
+Table {
+  translation -4 4 0
+  name "table7"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 4.8 0
+  name "chair_t7_1"
+}
+Chair {
+  translation -4 3.2 0
+  rotation 0 0 1 3.14159
+  name "chair_t7_2"
+}
+Chair {
+  translation -3.2 4 0
+  rotation 0 0 1 1.5708
+  name "chair_t7_3"
+}
+Chair {
+  translation -4.8 4 0
+  rotation 0 0 1 -1.5708
+  name "chair_t7_4"
+}
+Table {
+  translation -4 7 0
+  name "table8"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 7.8 0
+  name "chair_t8_1"
+}
+Chair {
+  translation -4 6.2 0
+  rotation 0 0 1 3.14159
+  name "chair_t8_2"
+}
+Chair {
+  translation -3.2 7 0
+  rotation 0 0 1 1.5708
+  name "chair_t8_3"
+}
+Chair {
+  translation -4.8 7 0
+  rotation 0 0 1 -1.5708
+  name "chair_t8_4"
+}
+Table {
+  translation -1 0 0
+  name "table9"
+  size 0.9 0.75 0.9
+}
+Chair {
+  translation -0.4 0 0
+  rotation 0 0 1 1.5708
+  name "chair_t9_1"
+}
+Chair {
+  translation -1.6 0 0
+  rotation 0 0 1 -1.5708
+  name "chair_t9_2"
+}
+Table {
+  translation -1 -7 0
+  name "table10"
+  size 1.5 0.75 1.5
+}
+Chair {
+  translation -1 -6.1 0
+  name "chair_t10_1"
+}
+Chair {
+  translation -1 -7.9 0
+  rotation 0 0 1 3.14159
+  name "chair_t10_2"
+}
+Chair {
+  translation -0.2 -7 0
+  rotation 0 0 1 1.5708
+  name "chair_t10_3"
+}
+Chair {
+  translation -1.8 -7 0
+  rotation 0 0 1 -1.5708
+  name "chair_t10_4"
+}
+Chair {
+  translation -0.2 -6.5 0
+  rotation 0 0 1 0.785
+  name "chair_t10_5"
+}
+Chair {
+  translation -1.8 -7.5 0
+  rotation 0 0 1 -2.356
+  name "chair_t10_6"
+}
+Table {
+  translation -1 7 0
+  name "table11"
+  size 1.5 0.75 1.5
+}
+Chair {
+  translation -1 7.9 0
+  name "chair_t11_1"
+}
+Chair {
+  translation -1 6.1 0
+  rotation 0 0 1 3.14159
+  name "chair_t11_2"
+}
+Chair {
+  translation -0.2 7 0
+  rotation 0 0 1 1.5708
+  name "chair_t11_3"
+}
+Chair {
+  translation -1.8 7 0
+  rotation 0 0 1 -1.5708
+  name "chair_t11_4"
+}
+Chair {
+  translation -0.2 7.5 0
+  rotation 0 0 1 0.785
+  name "chair_t11_5"
+}
+Chair {
+  translation -1.8 6.5 0
+  rotation 0 0 1 -2.356
+  name "chair_t11_6"
+}
+PottedTree {
+  translation -10 -8.5 0
+  name "plant1"
+}
+PottedTree {
+  translation -10 8.5 0
+  name "plant2"
+}
+PottedTree {
+  translation 7 -8.5 0
+  name "plant3"
+}
+PottedTree {
+  translation 7 8.5 0
+  name "plant4"
+}
+PottedTree {
+  translation -2 -8.5 0
+  name "plant5"
+}
+PottedTree {
+  translation -2 8.5 0
+  name "plant6"
+}
+Solid {
+  translation -1 -3.5 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.88 0.85 0.82
+        roughness 0.4
+        metalness 0.1
+      }
+      geometry Cylinder {
+        height 3
+        radius 0.25
+      }
+    }
+  ]
+  name "pillar1"
+  boundingObject Cylinder {
+    height 3
+    radius 0.25
+  }
+}
+Solid {
+  translation -1 3.5 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.88 0.85 0.82
+        roughness 0.4
+        metalness 0.1
+      }
+      geometry Cylinder {
+        height 3
+        radius 0.25
+      }
+    }
+  ]
+  name "pillar2"
+  boundingObject Cylinder {
+    height 3
+    radius 0.25
+  }
+}
+Solid {
+  translation 10.5 0 0.001
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.85 0.85 0.85
+        roughness 0.2
+        metalness 0.3
+      }
+      geometry Box {
+        size 4 18 0.001
+      }
+    }
+  ]
+  name "kitchen_floor"
+}
+Solid {
+  translation 10.5 -7 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.5 0.5 0.55
+        roughness 0.2
+        metalness 0.8
+      }
+      geometry Box {
+        size 1.5 2 1
+      }
+    }
+    Pose {
+      translation 0 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.1 0.1
+            emissiveColor 0.8 0.2 0.1
+          }
+          geometry Cylinder {
+            height 0.02
+            radius 0.15
+          }
+        }
+      ]
+    }
+  ]
+  name "cooking_station1"
+  boundingObject Box {
+    size 1.5 2 1
+  }
+}
+Solid {
+  translation 10.5 -3.5 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.5 0.5 0.55
+        roughness 0.2
+        metalness 0.8
+      }
+      geometry Box {
+        size 1.5 2 1
+      }
+    }
+    Pose {
+      translation 0 0 0.51
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.1 0.1
+            emissiveColor 0.8 0.2 0.1
+          }
+          geometry Cylinder {
+            height 0.02
+            radius 0.15
+          }
+        }
+      ]
+    }
+  ]
+  name "cooking_station2"
+  boundingObject Box {
+    size 1.5 2 1
+  }
+}
+Solid {
+  translation 10.5 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.75 0.72 0.68
+        roughness 0.5
+        metalness 0.2
+      }
+      geometry Box {
+        size 2 4 1
+      }
+    }
+  ]
+  name "prep_counter"
+  boundingObject Box {
+    size 2 4 1
+  }
+}
+DEF PICKUP_COUNTER Solid {
+  translation 8 -7.5 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.3
+        roughness 0.4
+        metalness 0.3
+      }
+      geometry Box {
+        size 1.5 3 1
+      }
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.2
+            emissiveColor 0.1 0.4 0.1
+          }
+        }
+      ]
+    }
+  ]
+  name "pickup_counter"
+  boundingObject Box {
+    size 1.5 3 1
+  }
+}
+Solid {
+  translation 11 3.5 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9 0.9 0.92
+        roughness 0.3
+        metalness 0.7
+      }
+      geometry Box {
+        size 1 1.2 2
+      }
+    }
+  ]
+  name "fridge"
+  boundingObject Box {
+    size 1 1.2 2
+  }
+}
+Solid {
+  translation 11 7 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.5 0.4
+        roughness 0.7
+        metalness 0.1
+      }
+      geometry Box {
+        size 1 3 2
+      }
+    }
+  ]
+  name "shelving"
+  boundingObject Box {
+    size 1 3 2
+  }
+}
+PointLight {
+  attenuation 0 0 0.3
+  color 1 0.96 0.88
+  intensity 2
+  location -6 -5.5 2.5
+  castShadows TRUE
+}
+PointLight {
+  attenuation 0 0 0.3
+  color 1 0.96 0.88
+  intensity 2
+  location -6 5.5 2.5
+  castShadows TRUE
+}
+PointLight {
+  attenuation 0 0 0.3
+  color 1 0.96 0.88
+  intensity 2
+  location -2 0 2.5
+  castShadows TRUE
+}
+PointLight {
+  attenuation 0 0 0.5
+  intensity 2.5
+  location 10.5 -5 2.5
+  castShadows TRUE
+}
+PointLight {
+  attenuation 0 0 0.5
+  intensity 2.5
+  location 10.5 5 2.5
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 0.6
+  color 0.9 0.8 0.6
+  cutOffAngle 0.8
+  direction 1 0 -1
+  intensity 1.5
+  location -11 0 3
+  castShadows TRUE
+}
+Robot {
+  children [
+    Emitter {
+      name "supervisor_emitter"
+      channel 1
+    }
+    Receiver {
+      name "supervisor_receiver"
+      channel 2
+    }
+  ]
+  name "restaurant_supervisor"
+  controller "restaurant_supervisor"
+  supervisor TRUE
+}
+DEF customer_1 Solid {
+  translation 4425654.154191771 2735922.527254522 15.023166623721266
+  rotation -0.5349558481671745 -0.32368429288081435 0.7804170161227818 -1.5213720763082943
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.4 0.8 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.48 0.96 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_1"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 9756.735714490896 6031.570422883513 1771.6458279651583
+  angularVelocity 984.6086179897873 6214.007844875337 7772.814958122188
+}
+DEF customer_2 Solid {
+  translation -1.0504415346139395 7.074773180867348 0.7431283939211503
+  rotation -0.9491634351786143 -0.11918238927528427 -0.2913491572092954 1.6642021093940456
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.2 0.8
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.72 0.24 0.96
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_2"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.002189370543306049 -0.00040932039209273655 1.706371135470464e-07
+  angularVelocity 0.0016387975121793423 0.00875727960592529 -4.2702491460698205e-06
+}
+DEF customer_3 Solid {
+  translation -9.698223845554832 -2.748368355410379 0.5364912710056716
+  rotation 0.5900515200222077 0.7524334442114973 0.2927167841984905 2.042896669309372
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.4 0.8 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.48 0.96 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_3"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.9530462641472501 1.2754678285972834 -39.188591124291044
+  angularVelocity -4.354117665476856 1.1148692469238588 0.5078254750005028
+}
+DEF customer_4 Solid {
+  translation -3.9342554168250508 6.706986759916176 0.8449564659070965
+  rotation -0.23390182396606546 0.9326918191143291 0.27454673063533497 -2.9341466560560545
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.4
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.24 0.48
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_4"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.22297576956901966 -0.9807308114408628 -0.6304417616129319
+  angularVelocity 0.31636602344112735 -0.4672933395006765 0.8195978801625098
+}
+DEF customer_5 Solid {
+  translation -9.243541537961047 -6.675681351335447 0.7127140842249154
+  rotation -0.16935119748056687 -0.978406907671789 -0.1184909065372761 2.025736736587555
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.4 0.8 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.48 0.96 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_5"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -1.9580278715304873 0.5302887985900295 -17.160739471885567
+  angularVelocity 1.4689372902590963 -1.9929482969594714 1.696200374897522
+}
+DEF customer_6 Solid {
+  translation -0.7140941283004094 -6.980081490564066 0.8428794276030158
+  rotation 0.9552798026947986 -0.17192644447329478 -0.24058635924373947 -2.829187472722239
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_6"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.0037494234514696247 0.0034190088113084435 -0.0044219676330376784
+  angularVelocity -0.004021753623877175 -0.004359177874805001 -0.00010798731238588376
+}
+DEF customer_7 Solid {
+  translation 30780.96432123174 -22082.17185776178 0.8851222892066838
+  rotation 0.07986838121546981 0.037459393164240795 -0.9961013179118816 -3.012161461999354
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.2 0.8
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.72 0.24 0.96
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_7"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -149.2949866265739 425.9327515167854 4.390286150835477
+  angularVelocity -9633.85239244673 -2042.1076118090232 -1737.4362095743536
+}
+DEF customer_8 Solid {
+  translation 17264.575935590048 158603.44159883496 1.192697527557226
+  rotation 0.8722672901641347 0.4210497647966366 0.24873051697452475 1.3055693183318073
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.4
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.24 0.48
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_8"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -131.3183079490976 -66.19947718252084 42.83719094465326
+  angularVelocity 7869.414606274274 6122.996752999869 762.3808217093166
+}
+DEF customer_9 Solid {
+  translation -3.8585891763100744 -3.715014363713167 0.6207516887995643
+  rotation -0.45201005820455886 0.3833840027842087 0.8054213888959425 1.958285495117611
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_9"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.0006886740043344257 -0.0001161423722281216 0.0017279101820073881
+  angularVelocity -0.000430730304733707 0.004604392234689167 -0.0004207611751316065
+}
+DEF customer_10 Solid {
+  translation -3.986206099198897 -6.701838180579499 0.6312701749613767
+  rotation 0.4704247979165348 -0.795492495450143 0.3819583736321167 2.423744968028545
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.4 0.8 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.48 0.96 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_10"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.000295003689574258 -0.00048418187688179437 -0.0003347217094994398
+  angularVelocity -9.589891427377139e-05 0.0011383033923701995 4.6586331109548326e-05
+}
+DEF customer_11 Solid {
+  translation -3.934273607850226 3.7070243802469065 0.8450265082704328
+  rotation 0.34766961787911754 0.9220024679714693 0.17040330354282465 -2.6553897485535978
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Transform {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_11"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.21734730270075062 -0.9703564596901199 -0.6216864661958963
+  angularVelocity 0.31063414497838504 -0.4505253611349198 0.8170174919074955
+}

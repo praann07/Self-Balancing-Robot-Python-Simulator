@@ -1,0 +1,914 @@
+#VRML_SIM R2025a utf8
+# Self-Balancing Service Robot v3
+# Two-wheeled self-balancing robot with articulated arms
+# Modern HSR/PR2-inspired design
+
+PROTO ServiceRobot_v3 [
+  field SFVec3f    translation  0 0 0.32
+  field SFRotation rotation     0 0 1 0
+  field SFString   name         "service_robot"
+  field SFString   controller   "restaurant_controller"
+  field SFString   customData   ""
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    controller IS controller
+    customData IS customData
+    supervisor FALSE
+    children [
+
+      # ======================= BASE PLATFORM =======================
+      # Main base housing (rounded white body)
+      Transform {
+        translation 0 0 -0.05
+        children [
+          Shape {
+            appearance DEF WHITE_BODY PBRAppearance {
+              baseColor 0.94 0.94 0.96
+              metalness 0.12
+              roughness 0.3
+            }
+            geometry Cylinder {
+              height 0.1
+              radius 0.18
+              subdivision 32
+            }
+          }
+        ]
+      }
+      # Base bottom ring (dark accent)
+      Transform {
+        translation 0 0 -0.1
+        children [
+          Shape {
+            appearance DEF DARK_BODY PBRAppearance {
+              baseColor 0.1 0.1 0.12
+              metalness 0.6
+              roughness 0.4
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.19
+              subdivision 32
+            }
+          }
+        ]
+      }
+      # Base top ring (silver trim)
+      Transform {
+        translation 0 0 0.0
+        children [
+          Shape {
+            appearance DEF SILVER PBRAppearance {
+              baseColor 0.78 0.8 0.83
+              metalness 0.85
+              roughness 0.15
+            }
+            geometry Cylinder {
+              height 0.008
+              radius 0.185
+              subdivision 32
+            }
+          }
+        ]
+      }
+      # Front indicator LED strip
+      Transform {
+        translation 0.175 0 -0.03
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.0 0.85 0.4
+              emissiveColor 0.0 0.7 0.3
+              metalness 0.9
+              roughness 0.05
+            }
+            geometry Box {
+              size 0.006 0.12 0.015
+            }
+          }
+        ]
+      }
+
+      # ======================= LOWER TORSO =======================
+      # Waist connector (dark joint)
+      Transform {
+        translation 0 0 0.06
+        children [
+          Shape {
+            appearance DEF DARK_JOINT PBRAppearance {
+              baseColor 0.25 0.25 0.28
+              metalness 0.7
+              roughness 0.3
+            }
+            geometry Cylinder {
+              height 0.08
+              radius 0.055
+              subdivision 24
+            }
+          }
+        ]
+      }
+
+      # ======================= MID TORSO (main body) =======================
+      Transform {
+        translation 0 0 0.16
+        children [
+          Shape {
+            appearance USE WHITE_BODY
+            geometry Box {
+              size 0.22 0.2 0.1
+            }
+          }
+        ]
+      }
+      # Side panels (blue accent)
+      Transform {
+        translation 0 0.105 0.16
+        children [
+          Shape {
+            appearance DEF BLUE_ACCENT PBRAppearance {
+              baseColor 0.12 0.42 0.82
+              metalness 0.5
+              roughness 0.3
+            }
+            geometry Box {
+              size 0.2 0.006 0.08
+            }
+          }
+        ]
+      }
+      Transform {
+        translation 0 -0.105 0.16
+        children [
+          Shape {
+            appearance USE BLUE_ACCENT
+            geometry Box {
+              size 0.2 0.006 0.08
+            }
+          }
+        ]
+      }
+
+      # ======================= UPPER TORSO / CHEST =======================
+      Transform {
+        translation 0 0 0.27
+        children [
+          Shape {
+            appearance USE WHITE_BODY
+            geometry Box {
+              size 0.24 0.26 0.1
+            }
+          }
+        ]
+      }
+      # Chest front plate (dark screen/sensor area)
+      Transform {
+        translation 0.121 0 0.27
+        children [
+          Shape {
+            appearance DEF SCREEN_DARK PBRAppearance {
+              baseColor 0.05 0.05 0.07
+              metalness 0.85
+              roughness 0.1
+            }
+            geometry Box {
+              size 0.005 0.18 0.07
+            }
+          }
+        ]
+      }
+      # Chest logo indicator
+      Transform {
+        translation 0.124 0 0.285
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.15 0.5 0.95
+              emissiveColor 0.1 0.35 0.7
+              metalness 0.9
+              roughness 0.05
+            }
+            geometry Box {
+              size 0.002 0.05 0.015
+            }
+          }
+        ]
+      }
+
+      # ======================= SHOULDER HOUSINGS =======================
+      # Left shoulder dome
+      Transform {
+        translation 0 0.15 0.3
+        children [
+          Shape {
+            appearance USE WHITE_BODY
+            geometry Sphere {
+              radius 0.04
+              subdivision 3
+            }
+          }
+        ]
+      }
+      # Right shoulder dome
+      Transform {
+        translation 0 -0.15 0.3
+        children [
+          Shape {
+            appearance USE WHITE_BODY
+            geometry Sphere {
+              radius 0.04
+              subdivision 3
+            }
+          }
+        ]
+      }
+
+      # ======================= NECK =======================
+      Transform {
+        translation 0 0 0.355
+        children [
+          Shape {
+            appearance USE DARK_JOINT
+            geometry Cylinder {
+              height 0.05
+              radius 0.03
+              subdivision 24
+            }
+          }
+        ]
+      }
+
+      # ======================= HEAD =======================
+      # Head body (white)
+      Transform {
+        translation 0 0 0.41
+        children [
+          Shape {
+            appearance USE WHITE_BODY
+            geometry Box {
+              size 0.13 0.15 0.08
+            }
+          }
+        ]
+      }
+      # Head top cap
+      Transform {
+        translation 0 0 0.455
+        children [
+          Shape {
+            appearance USE WHITE_BODY
+            geometry Cylinder {
+              height 0.01
+              radius 0.07
+              subdivision 24
+            }
+          }
+        ]
+      }
+      # Face display (blue emissive screen)
+      Transform {
+        translation 0.066 0 0.41
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.05 0.55 0.95
+              emissiveColor 0.06 0.5 0.85
+              metalness 0.95
+              roughness 0.02
+            }
+            geometry Box {
+              size 0.004 0.12 0.06
+            }
+          }
+        ]
+      }
+      # Display bezel (dark frame)
+      Transform {
+        translation 0.064 0 0.41
+        children [
+          Shape {
+            appearance USE SCREEN_DARK
+            geometry Box {
+              size 0.002 0.13 0.07
+            }
+          }
+        ]
+      }
+      # Camera lens
+      Transform {
+        translation 0.067 0 0.445
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.01 0.01 0.01
+              metalness 0.9
+              roughness 0.1
+            }
+            geometry Sphere {
+              radius 0.007
+              subdivision 2
+            }
+          }
+        ]
+      }
+      # Camera LED
+      Transform {
+        translation 0.068 0.012 0.445
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9 0.1 0.1
+              emissiveColor 0.7 0.05 0.05
+              metalness 0.9
+              roughness 0.05
+            }
+            geometry Sphere {
+              radius 0.003
+              subdivision 2
+            }
+          }
+        ]
+      }
+
+      # ======================= SENSORS =======================
+      InertialUnit {
+        name "imu"
+      }
+      GPS {
+        name "gps"
+      }
+      Accelerometer {
+        name "accelerometer"
+      }
+      Gyro {
+        name "gyro"
+      }
+      DistanceSensor {
+        translation 0.19 0 0.05
+        rotation 0 0 1 0
+        name "distance_front"
+        lookupTable [
+          0 0 0
+          3 3000 0
+        ]
+        numberOfRays 2
+      }
+      DistanceSensor {
+        translation 0 0.19 0.05
+        rotation 0 0 1 1.5708
+        name "distance_left"
+        lookupTable [
+          0 0 0
+          3 3000 0
+        ]
+        numberOfRays 2
+      }
+      DistanceSensor {
+        translation 0 -0.19 0.05
+        rotation 0 0 1 -1.5708
+        name "distance_right"
+        lookupTable [
+          0 0 0
+          3 3000 0
+        ]
+        numberOfRays 2
+      }
+
+      # ======================= LEFT WHEEL =======================
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 1 0
+          anchor 0 0.17 -0.2
+          dampingConstant 0.2
+        }
+        device [
+          RotationalMotor {
+            name "left_wheel_motor"
+            maxVelocity 20
+            maxTorque 20
+          }
+          PositionSensor {
+            name "left_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 0.17 -0.2
+          rotation 1 0 0 1.5708
+          children [
+            # Tire (black rubber)
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.05 0.05
+                metalness 0.05
+                roughness 0.95
+              }
+              geometry Cylinder {
+                height 0.04
+                radius 0.1
+                subdivision 32
+              }
+            }
+            # Hub cap (silver center)
+            Transform {
+              translation 0 0.015 0
+              children [
+                Shape {
+                  appearance USE SILVER
+                  geometry Cylinder {
+                    height 0.012
+                    radius 0.05
+                    subdivision 24
+                  }
+                }
+              ]
+            }
+            # Hub bolt
+            Transform {
+              translation 0 0.02 0
+              children [
+                Shape {
+                  appearance USE DARK_BODY
+                  geometry Cylinder {
+                    height 0.005
+                    radius 0.012
+                    subdivision 12
+                  }
+                }
+              ]
+            }
+          ]
+          name "left_wheel"
+          contactMaterial "wheel"
+          boundingObject Cylinder {
+            height 0.04
+            radius 0.1
+          }
+          physics Physics {
+            density -1
+            mass 0.5
+            damping Damping {
+              linear 0
+              angular 0
+            }
+          }
+        }
+      }
+
+      # ======================= RIGHT WHEEL =======================
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 1 0
+          anchor 0 -0.17 -0.2
+          dampingConstant 0.2
+        }
+        device [
+          RotationalMotor {
+            name "right_wheel_motor"
+            maxVelocity 20
+            maxTorque 20
+          }
+          PositionSensor {
+            name "right_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 -0.17 -0.2
+          rotation 1 0 0 1.5708
+          children [
+            # Tire
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.05 0.05 0.05
+                metalness 0.05
+                roughness 0.95
+              }
+              geometry Cylinder {
+                height 0.04
+                radius 0.1
+                subdivision 32
+              }
+            }
+            # Hub cap
+            Transform {
+              translation 0 -0.015 0
+              children [
+                Shape {
+                  appearance USE SILVER
+                  geometry Cylinder {
+                    height 0.012
+                    radius 0.05
+                    subdivision 24
+                  }
+                }
+              ]
+            }
+            # Hub bolt
+            Transform {
+              translation 0 -0.02 0
+              children [
+                Shape {
+                  appearance USE DARK_BODY
+                  geometry Cylinder {
+                    height 0.005
+                    radius 0.012
+                    subdivision 12
+                  }
+                }
+              ]
+            }
+          ]
+          name "right_wheel"
+          contactMaterial "wheel"
+          boundingObject Cylinder {
+            height 0.04
+            radius 0.1
+          }
+          physics Physics {
+            density -1
+            mass 0.5
+            damping Damping {
+              linear 0
+              angular 0
+            }
+          }
+        }
+      }
+
+      # ======================= LEFT ARM =======================
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position -0.5
+          axis 0 1 0
+          anchor 0 0.16 0.3
+        }
+        device [
+          RotationalMotor {
+            name "left_shoulder_motor"
+            minPosition -3.14
+            maxPosition 0.5
+            maxTorque 4
+          }
+        ]
+        endPoint Solid {
+          translation 0 0.16 0.3
+          children [
+            # Shoulder joint (silver ball)
+            Shape {
+              appearance USE SILVER
+              geometry Sphere {
+                radius 0.032
+                subdivision 3
+              }
+            }
+            # Upper arm
+            Transform {
+              translation 0 0 -0.08
+              children [
+                Shape {
+                  appearance USE WHITE_BODY
+                  geometry Cylinder {
+                    height 0.1
+                    radius 0.025
+                    subdivision 20
+                  }
+                }
+              ]
+            }
+            # Upper arm blue stripe
+            Transform {
+              translation 0.026 0 -0.08
+              children [
+                Shape {
+                  appearance USE BLUE_ACCENT
+                  geometry Box {
+                    size 0.003 0.015 0.09
+                  }
+                }
+              ]
+            }
+            # Elbow joint
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                position -0.8
+                axis 0 1 0
+                anchor 0 0 -0.16
+              }
+              device [
+                RotationalMotor {
+                  name "left_elbow_motor"
+                  minPosition -2.5
+                  maxPosition 0
+                  maxTorque 3
+                }
+              ]
+              endPoint Solid {
+                translation 0 0 -0.16
+                children [
+                  # Elbow ball
+                  Shape {
+                    appearance USE SILVER
+                    geometry Sphere {
+                      radius 0.025
+                      subdivision 3
+                    }
+                  }
+                  # Forearm
+                  Transform {
+                    translation 0 0 -0.07
+                    children [
+                      Shape {
+                        appearance USE WHITE_BODY
+                        geometry Cylinder {
+                          height 0.08
+                          radius 0.022
+                          subdivision 20
+                        }
+                      }
+                    ]
+                  }
+                  # Forearm blue stripe
+                  Transform {
+                    translation 0.023 0 -0.07
+                    children [
+                      Shape {
+                        appearance USE BLUE_ACCENT
+                        geometry Box {
+                          size 0.003 0.012 0.07
+                        }
+                      }
+                    ]
+                  }
+                  # Wrist
+                  Transform {
+                    translation 0 0 -0.12
+                    children [
+                      Shape {
+                        appearance USE DARK_JOINT
+                        geometry Cylinder {
+                          height 0.018
+                          radius 0.018
+                          subdivision 16
+                        }
+                      }
+                    ]
+                  }
+                  # Gripper hand
+                  Transform {
+                    translation 0 0 -0.145
+                    children [
+                      # Palm
+                      Shape {
+                        appearance USE SILVER
+                        geometry Box {
+                          size 0.045 0.035 0.025
+                        }
+                      }
+                      # Finger L
+                      Transform {
+                        translation 0.008 0.015 -0.022
+                        children [
+                          Shape {
+                            appearance USE DARK_JOINT
+                            geometry Box {
+                              size 0.02 0.007 0.022
+                            }
+                          }
+                        ]
+                      }
+                      # Finger R
+                      Transform {
+                        translation 0.008 -0.015 -0.022
+                        children [
+                          Shape {
+                            appearance USE DARK_JOINT
+                            geometry Box {
+                              size 0.02 0.007 0.022
+                            }
+                          }
+                        ]
+                      }
+                      # Thumb
+                      Transform {
+                        translation -0.018 0 -0.012
+                        children [
+                          Shape {
+                            appearance USE DARK_JOINT
+                            geometry Box {
+                              size 0.007 0.022 0.02
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+                name "left_forearm"
+              }
+            }
+          ]
+          name "left_upper_arm"
+        }
+      }
+
+      # ======================= RIGHT ARM =======================
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0.5
+          axis 0 1 0
+          anchor 0 -0.16 0.3
+        }
+        device [
+          RotationalMotor {
+            name "right_shoulder_motor"
+            minPosition -0.5
+            maxPosition 3.14
+            maxTorque 4
+          }
+        ]
+        endPoint Solid {
+          translation 0 -0.16 0.3
+          children [
+            # Shoulder joint
+            Shape {
+              appearance USE SILVER
+              geometry Sphere {
+                radius 0.032
+                subdivision 3
+              }
+            }
+            # Upper arm
+            Transform {
+              translation 0 0 -0.08
+              children [
+                Shape {
+                  appearance USE WHITE_BODY
+                  geometry Cylinder {
+                    height 0.1
+                    radius 0.025
+                    subdivision 20
+                  }
+                }
+              ]
+            }
+            # Upper arm blue stripe
+            Transform {
+              translation 0.026 0 -0.08
+              children [
+                Shape {
+                  appearance USE BLUE_ACCENT
+                  geometry Box {
+                    size 0.003 0.015 0.09
+                  }
+                }
+              ]
+            }
+            # Elbow joint
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                position 0.8
+                axis 0 1 0
+                anchor 0 0 -0.16
+              }
+              device [
+                RotationalMotor {
+                  name "right_elbow_motor"
+                  minPosition 0
+                  maxPosition 2.5
+                  maxTorque 3
+                }
+              ]
+              endPoint Solid {
+                translation 0 0 -0.16
+                children [
+                  # Elbow ball
+                  Shape {
+                    appearance USE SILVER
+                    geometry Sphere {
+                      radius 0.025
+                      subdivision 3
+                    }
+                  }
+                  # Forearm
+                  Transform {
+                    translation 0 0 -0.07
+                    children [
+                      Shape {
+                        appearance USE WHITE_BODY
+                        geometry Cylinder {
+                          height 0.08
+                          radius 0.022
+                          subdivision 20
+                        }
+                      }
+                    ]
+                  }
+                  # Forearm blue stripe
+                  Transform {
+                    translation 0.023 0 -0.07
+                    children [
+                      Shape {
+                        appearance USE BLUE_ACCENT
+                        geometry Box {
+                          size 0.003 0.012 0.07
+                        }
+                      }
+                    ]
+                  }
+                  # Wrist
+                  Transform {
+                    translation 0 0 -0.12
+                    children [
+                      Shape {
+                        appearance USE DARK_JOINT
+                        geometry Cylinder {
+                          height 0.018
+                          radius 0.018
+                          subdivision 16
+                        }
+                      }
+                    ]
+                  }
+                  # Gripper hand
+                  Transform {
+                    translation 0 0 -0.145
+                    children [
+                      # Palm
+                      Shape {
+                        appearance USE SILVER
+                        geometry Box {
+                          size 0.045 0.035 0.025
+                        }
+                      }
+                      # Finger L
+                      Transform {
+                        translation 0.008 0.015 -0.022
+                        children [
+                          Shape {
+                            appearance USE DARK_JOINT
+                            geometry Box {
+                              size 0.02 0.007 0.022
+                            }
+                          }
+                        ]
+                      }
+                      # Finger R
+                      Transform {
+                        translation 0.008 -0.015 -0.022
+                        children [
+                          Shape {
+                            appearance USE DARK_JOINT
+                            geometry Box {
+                              size 0.02 0.007 0.022
+                            }
+                          }
+                        ]
+                      }
+                      # Thumb
+                      Transform {
+                        translation -0.018 0 -0.012
+                        children [
+                          Shape {
+                            appearance USE DARK_JOINT
+                            geometry Box {
+                              size 0.007 0.022 0.02
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+                name "right_forearm"
+              }
+            }
+          ]
+          name "right_upper_arm"
+        }
+      }
+    ]
+    boundingObject Transform {
+      translation 0 0 -0.05
+      children [
+        Cylinder {
+          height 0.1
+          radius 0.18
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 6.5
+      centerOfMass [0 0 -0.15]
+      damping Damping {
+        linear 0.0
+        angular 0.0
+      }
+    }
+  }
+}

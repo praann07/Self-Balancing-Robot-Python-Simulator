@@ -1,24 +1,4 @@
-#!/usr/bin/env python3
 
-""" ibalancingbot.py details a class to simulate a self balancing robot
-    behavior.It uses a runge-kutta approach to deal with the system dynamic.
-
-    Copyright (C) 2017 
-    Remy GUYONNEAU, ISTIA/LARIS, University of Angers (France)
-    remy.guyonneau@univ-angers.fr
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>."""
 
 from math import cos
 from math import sin
@@ -26,12 +6,7 @@ from math import pi
 from math import atan
 
 class IBalancingBot:
-    """ A class to simulate the behavior of a self balancing robot
-        The mathematical model is from the article : 
-            'A comparison of Controllers for Balancing Two Wheeled Inverted 
-            Pendulum Robot', Amir A. Bature, Salinda Buyamin, Mohammed N. Ahmad,
-            Mustapha Muhammad.
-    """
+    
 
     def __init__(self):
         """ The constructor of the class """
@@ -69,10 +44,7 @@ class IBalancingBot:
         self.initRobot()  # to initialize all the parameters of the system
 
     def initRobot(self):
-        """ Function to initialize all the parameters of the system
-            The value presented here are the value from the paper where the 
-            model come from.
-        """
+        
         # variables for the model
         self.Mb = 13.3    # kg      mass of main body (pendulum)
         self.Mw = 1.89    # kg      mass of wheels
@@ -94,13 +66,13 @@ class IBalancingBot:
         self.psi = 0
         self.psip = 0
 
-        # variables for the drawing
-        self.d_rw = self.R
+        # variables for the drawing (adjusted for realistic appearance)
+        self.d_rw = self.R * 1.35  # Bigger wheels (35% larger)
         self.d_dstw = self.L
-        self.d_widthw = 0.01
-        self.d_heightp = self.d
-        self.d_centerp = self.d
-        self.d_widthp = 0.01
+        self.d_widthw = 0.025  # Wheel width
+        self.d_heightp = self.d * 2.0  # Medium height body (2x original)
+        self.d_centerp = self.d  # Keep center of mass at correct position
+        self.d_widthp = 0.025  # Body thickness
 
         # to deal with the fact that the pendulum can not be lower than the ground
         # we compute the maximal possible angle for the pendulum
@@ -159,9 +131,7 @@ class IBalancingBot:
 
 
     def runge_kutta(self, deltat, F):
-        """ Function that call the f() function defined above, and uses a 
-            runge-kutta approach to deal with the differential equations
-        """
+        
         k1phip, k1phipp, k1xp, k1xpp, k1psip, k1psipp = \
             self.f(self.phi, self.phip, self.x, self.xp, self.psi, self.psip, deltat, F)
         k2phip, k2phipp, k2xp, k2xpp, k2psip, k2psipp = \

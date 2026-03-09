@@ -1,6 +1,35 @@
 # Self-Balancing-Robot-Python-Simulator
 
- Here is presented a source code to simulate a self balancing two wheeled robot with pyhton and using OpenGL to display the simulated robot.
+A professional self-balancing two-wheeled restaurant service robot simulator with two versions:
+1. **OpenGL Simulator** (src/) - Fast custom 3D visualization
+2. **Webots Simulator** (webots_project/) - Professional physics engine (NEW! ⭐)
+
+---
+
+## 🎉 NEW: Webots Professional Simulator
+
+A complete Webots implementation with realistic physics, collision detection, and autonomous food delivery!
+
+**Quick Start:**
+1. Install [Webots](https://cyberbotics.com/) (free)
+2. Run: `webots_project\launch_webots.bat`
+3. Or open: `webots_project\worlds\restaurant_service.wbt` in Webots
+
+**Features:**
+- ✅ Real physics engine (ODE)
+- ✅ Professional robot model with arms and hands
+- ✅ Realistic collision detection
+- ✅ Autonomous navigation to tables
+- ✅ Automatic food delivery system
+- ✅ Distance sensors for obstacle avoidance
+
+See [webots_project/README.md](webots_project/README.md) for full documentation.
+
+---
+
+## OpenGL Simulator (Original)
+
+Here is presented a source code to simulate a self balancing two wheeled robot with python and using OpenGL to display the simulated robot.
 
 This simulator has three files:
 

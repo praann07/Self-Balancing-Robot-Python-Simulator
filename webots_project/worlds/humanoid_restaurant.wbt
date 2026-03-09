@@ -1,0 +1,4700 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/chairs/protos/Chair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/plants/protos/PottedTree.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+
+WorldInfo {
+  info [
+    "🏪 Professional Restaurant - GTA 5 Quality Graphics"
+    "🤖 Realistic Humanoid Self-Balancing Robots"
+    "👐 5-Finger Realistic Hands"
+    "🍽️ Real-time Order Management System"
+  ]
+  title "Professional Restaurant Service v2.0 - Humanoid Robots"
+  basicTimeStep 8
+  optimalThreadCount 8
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+  contactProperties [
+    ContactProperties {
+      material1 "wheel"
+      material2 "floor"
+      coulombFriction [
+        1.5
+      ]
+      bounce 0.1
+      softCFM 0.0005
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.30151134457776363 0.30151134457776363 0.9045340337332909 1.8
+  position -0.798235396245824 -32.95336258244732 30.830181160034567
+  exposure 1.3
+  follow "robot1"
+  followType "Mounted Shot"
+  ambientOcclusionRadius 0.5
+}
+TexturedBackground {
+  texture "noon_building_overcast"
+  luminosity 1.2
+}
+TexturedBackgroundLight {
+  luminosity 1.8
+}
+RectangleArena {
+  floorSize 25 20
+  floorTileSize 1 1
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/parquetry.jpg"
+      ]
+    }
+    roughness 0.5
+    metalness 0.1
+  }
+  wallHeight 0.01
+}
+Table {
+  translation -7 -7 0
+  name "table1"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 -6.4 0
+  name "chair1_1"
+}
+Chair {
+  translation -7 -7.6 0
+  rotation 0 0 1 3.14159
+  name "chair1_2"
+}
+Table {
+  translation -7 -4 0
+  name "table2"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 -3.4 0
+  name "chair2_1"
+}
+Chair {
+  translation -7 -4.6 0
+  rotation 0 0 1 3.14159
+  name "chair2_2"
+}
+Table {
+  translation -4 -7 0
+  name "table3"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 -6.3 0
+  name "chair3_1"
+}
+Chair {
+  translation -4 -7.7 0
+  rotation 0 0 1 3.14159
+  name "chair3_2"
+}
+Chair {
+  translation -3.3 -7 0
+  rotation 0 0 1 1.5708
+  name "chair3_3"
+}
+Chair {
+  translation -4.7 -7 0
+  rotation 0 0 1 -1.5708
+  name "chair3_4"
+}
+Table {
+  translation -4 -4 0
+  name "table4"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 -3.3 0
+  name "chair4_1"
+}
+Chair {
+  translation -4 -4.7 0
+  rotation 0 0 1 3.14159
+  name "chair4_2"
+}
+Chair {
+  translation -3.3 -4 0
+  rotation 0 0 1 1.5708
+  name "chair4_3"
+}
+Chair {
+  translation -4.7 -4 0
+  rotation 0 0 1 -1.5708
+  name "chair4_4"
+}
+Table {
+  translation -7 4 0
+  name "table5"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 4.6 0
+  name "chair5_1"
+}
+Chair {
+  translation -7 3.4 0
+  rotation 0 0 1 3.14159
+  name "chair5_2"
+}
+Table {
+  translation -7 7 0
+  name "table6"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -7 7.6 0
+  name "chair6_1"
+}
+Chair {
+  translation -7 6.4 0
+  rotation 0 0 1 3.14159
+  name "chair6_2"
+}
+Table {
+  translation -4 4 0
+  name "table7"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 4.7 0
+  name "chair7_1"
+}
+Chair {
+  translation -4 3.3 0
+  rotation 0 0 1 3.14159
+  name "chair7_2"
+}
+Chair {
+  translation -3.3 4 0
+  rotation 0 0 1 1.5708
+  name "chair7_3"
+}
+Chair {
+  translation -4.7 4 0
+  rotation 0 0 1 -1.5708
+  name "chair7_4"
+}
+Table {
+  translation -4 7 0
+  name "table8"
+  size 1.2 0.75 1.2
+}
+Chair {
+  translation -4 7.7 0
+  name "chair8_1"
+}
+Chair {
+  translation -4 6.3 0
+  rotation 0 0 1 3.14159
+  name "chair8_2"
+}
+Chair {
+  translation -3.3 7 0
+  rotation 0 0 1 1.5708
+  name "chair8_3"
+}
+Chair {
+  translation -4.7 7 0
+  rotation 0 0 1 -1.5708
+  name "chair8_4"
+}
+Table {
+  translation -1 0 0
+  name "table9"
+  size 0.8 0.75 0.8
+}
+Chair {
+  translation -1 0.6 0
+  name "chair9_1"
+}
+Chair {
+  translation -1 -0.6 0
+  rotation 0 0 1 3.14159
+  name "chair9_2"
+}
+Table {
+  translation -1 -7 0
+  name "table10"
+  size 1.5 0.75 1.5
+}
+Chair {
+  translation -1 -6.2 0
+  name "chair10_1"
+}
+Chair {
+  translation -1 -7.8 0
+  rotation 0 0 1 3.14159
+  name "chair10_2"
+}
+Chair {
+  translation -0.2 -7 0
+  rotation 0 0 1 1.5708
+  name "chair10_3"
+}
+Chair {
+  translation -1.8 -7 0
+  rotation 0 0 1 -1.5708
+  name "chair10_4"
+}
+Chair {
+  translation -0.2 -6.2 0
+  rotation 0 0 1 0.785398
+  name "chair10_5"
+}
+Chair {
+  translation -0.2 -7.8 0
+  rotation 0 0 1 2.356194
+  name "chair10_6"
+}
+Table {
+  translation -1 7 0
+  name "table11"
+  size 1.5 0.75 1.5
+}
+Chair {
+  translation -1 7.8 0
+  name "chair11_1"
+}
+Chair {
+  translation -1 6.2 0
+  rotation 0 0 1 3.14159
+  name "chair11_2"
+}
+Chair {
+  translation -0.2 7 0
+  rotation 0 0 1 1.5708
+  name "chair11_3"
+}
+Chair {
+  translation -1.8 7 0
+  rotation 0 0 1 -1.5708
+  name "chair11_4"
+}
+Chair {
+  translation -0.2 7.8 0
+  rotation 0 0 1 0.785398
+  name "chair11_5"
+}
+Chair {
+  translation -0.2 6.2 0
+  rotation 0 0 1 -0.785398
+  name "chair11_6"
+}
+Solid {
+  translation -1 3.5 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9 0.9 0.85
+        roughness 0.4
+        metalness 0.2
+      }
+      geometry Cylinder {
+        height 1
+        radius 0.2
+      }
+    }
+  ]
+  name "pillar1"
+  boundingObject Cylinder {
+    height 1
+    radius 0.2
+  }
+}
+Solid {
+  translation -1 -3.5 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9 0.9 0.85
+        roughness 0.4
+        metalness 0.2
+      }
+      geometry Cylinder {
+        height 1
+        radius 0.2
+      }
+    }
+  ]
+  name "pillar2"
+  boundingObject Cylinder {
+    height 1
+    radius 0.2
+  }
+}
+PottedTree {
+  translation -10 -9 0
+  name "plant1"
+}
+PottedTree {
+  translation -10 9 0
+  name "plant2"
+}
+PottedTree {
+  translation 2 -9 0
+  name "plant3"
+}
+PottedTree {
+  translation 2 9 0
+  name "plant4"
+}
+Solid {
+  translation -11 0 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.4 0.2
+        roughness 0.6
+        metalness 0.3
+      }
+      geometry Box {
+        size 1.5 2 1
+      }
+    }
+  ]
+  name "reception_desk"
+  boundingObject Box {
+    size 1.5 2 1
+  }
+}
+Wall {
+  translation 0 10 0
+  name "wall_north"
+  size 25 0.2 2
+}
+Wall {
+  translation 0 -10 0
+  name "wall_south"
+  size 25 0.2 2
+}
+Wall {
+  translation 12.5 0 0
+  rotation 0 0 1 1.5708
+  name "wall_east"
+  size 20 0.2 2
+}
+Wall {
+  translation -12.5 0 0
+  rotation 0 0 1 1.5708
+  name "wall_west"
+  size 20 0.2 2
+}
+Wall {
+  translation 7.5 0 0
+  rotation 0 0 1 1.5708
+  name "kitchen_wall"
+  size 20 0.2 2
+}
+Solid {
+  translation 8 -7.5 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 0.2
+        metalness 0.9
+      }
+      geometry Box {
+        size 1 1.5 1
+      }
+    }
+  ]
+  name "pickup_counter"
+  boundingObject Box {
+    size 1 1.5 1
+  }
+}
+Solid {
+  translation 10.5 -7 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0.8
+      }
+      geometry Box {
+        size 1.2 1 1
+      }
+    }
+  ]
+  name "cooking_station1"
+  boundingObject Box {
+    size 1.2 1 1
+  }
+}
+Solid {
+  translation 10.5 -3.5 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0.8
+      }
+      geometry Box {
+        size 1.2 1 1
+      }
+    }
+  ]
+  name "cooking_station2"
+  boundingObject Box {
+    size 1.2 1 1
+  }
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 1.2
+  cutOffAngle 1.5
+  intensity 3
+  location -7 -5.5 3
+  radius 8
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 1.2
+  cutOffAngle 1.5
+  intensity 3
+  location -7 5.5 3
+  radius 8
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 1.2
+  cutOffAngle 1.5
+  intensity 3
+  location -4 0 3
+  radius 8
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 1.2
+  cutOffAngle 1.5
+  intensity 3
+  location -1 0 3
+  radius 8
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 1
+  cutOffAngle 1.3
+  intensity 4
+  location 10 -5 3
+  radius 10
+  castShadows TRUE
+}
+SpotLight {
+  attenuation 0 0 1
+  beamWidth 1
+  cutOffAngle 1.3
+  intensity 2.5
+  location -11 0 3
+  radius 5
+  castShadows TRUE
+}
+Robot {
+  name "supervisor"
+  controller "restaurant_supervisor"
+  supervisor TRUE
+}
+DEF customer_1 Solid {
+  translation -6.700015939997869 7.000013325264328 0.2362659998854858
+  rotation 0.4887584374488073 0.731965856526712 0.47470114251149337 1.8659541620583808
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.4
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.24 0.48
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_1"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 7.547956922457896e-08 3.954557276316312e-06 -2.600212223236067e-08
+  angularVelocity -1.5818229105263098e-05 3.019182768365915e-07 3.2004280435355075e-19
+}
+DEF customer_2 Solid {
+  translation -4.0453775918213655 7.105053124171523 0.7430725408500661
+  rotation -0.5139791724233428 -0.5265825526547352 -0.6771530296429593 2.580236006214991
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_2"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -8.270081822865773e-06 -1.8183920086590916e-06 -4.858623558711042e-06
+  angularVelocity 2.130580265194244e-05 -3.912111017559679e-06 -1.198333433818985e-05
+}
+DEF customer_3 Solid {
+  translation -1.6217360204682192 5.519084269842766e-14 0.7429500443658379
+  rotation 0.5090115219211744 0.608649024706189 -0.6086490247061066 2.1999310337625335
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.2 0.8
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.72 0.24 0.96
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_3"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.9944701686732105 9.288076936886643e-14 -13.307248429495665
+  angularVelocity 3.2392807803019625e-15 -2.837999034695218 -3.825124333926987e-13
+}
+DEF customer_4 Solid {
+  translation -4.045403794929181 -6.852645680486057 0.7430096308116949
+  rotation 0.5316967212669894 0.5191078946671376 -0.6691977213710351 2.516045523350863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.8 0.8
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.96 0.96
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_4"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -2.7206292228420187e-06 1.0714075581126115e-06 -1.825507729269662e-06
+  angularVelocity -2.196204947814809e-06 -5.306847748546583e-06 -9.580987418607775e-07
+}
+DEF customer_5 Solid {
+  translation -7.621736020468219 -4.000000000000103 0.7429500443658379
+  rotation -0.9926402190221894 0.08563117300254094 0.08563117300252578 1.5781832574019332
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.4
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.24 0.48
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_5"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.9944701686731855 -1.2618901948834147e-13 -13.307248429495665
+  angularVelocity 1.5014967679694e-14 -2.8379990346951383 5.138960406793294e-13
+}
+DEF customer_6 Solid {
+  translation -4.072814083881785 -3.9513389661527243 0.7431189975696587
+  rotation 0.054224394690784376 0.7190631221431298 0.6928260542114394 2.73928070322602
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.2 0.8
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.72 0.24 0.96
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_6"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -6.838259713880113e-06 -4.044649483676202e-06 -4.535967029164199e-06
+  angularVelocity 2.3087377170603558e-05 9.855858163397184e-07 -1.1584206249489814e-05
+}
+DEF customer_7 Solid {
+  translation -0.7278065927554399 -7.001234537699906 0.6204860617348033
+  rotation -0.9647376186422455 -0.14109309150490126 0.22220276034756856 0.4550660011287467
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.4
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.24 0.48
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_7"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.00487933033626039 -0.001989948607837664 -3.653474848629633e-05
+  angularVelocity -0.0051640859392257125 0.004122480871129174 -0.0022222435067964386
+}
+DEF customer_8 Solid {
+  translation -3.316986783104241 3.192056003977889 0.7423431642478454
+  rotation 0.3526584449889696 0.6839827424816343 0.6385919112901947 2.7481678329626673
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.4
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.24 0.48
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_8"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.6419891897094152 -0.7594919585249861 -13.38268895115871
+  angularVelocity 1.7499482247787554 1.7742194796658366 -0.3501858732374972
+}
+DEF customer_9 Solid {
+  translation -7.621736020468219 3.999999999999914 0.7429500443658379
+  rotation 0.19862266026050193 0.6930184120321793 0.6930184120320596 -2.7494509643716385
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.2 0.4
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.24 0.48
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_9"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.994470168673187 -1.0898184363234385e-13 -13.307248429495665
+  angularVelocity -2.9367362176047224e-14 -2.8379990346951383 4.591455227577144e-13
+}
+DEF customer_10 Solid {
+  translation -6.378263979531781 -6.999999999999897 0.7429500443658379
+  rotation -0.9894775912424929 0.10230859306273024 0.10230859306274782 1.5813742902641803
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.6 0.2
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_10"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.9944701686731855 1.1753822135164585e-13 -13.307248429495665
+  angularVelocity -1.2989122008703796e-14 2.8379990346951383 4.78967575043641e-13
+}
+DEF customer_11 Solid {
+  translation -0.7027739803129708 6.999141573806715 0.6250278802403013
+  rotation -0.6939505949840156 0.6991263886382639 -0.172205878038323 -2.8524015966603056
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.2 0.8
+        roughness 0.8
+      }
+      geometry Cylinder {
+        height 1.7
+        radius 0.25
+      }
+    }
+    Pose {
+      translation 0 0 1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.72 0.24 0.96
+            roughness 0.9
+          }
+          geometry Sphere {
+            radius 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_11"
+  boundingObject Cylinder {
+    height 1.7
+    radius 0.25
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.00206317205692177 -0.00046748833775256616 -0.0025429901615878175
+  angularVelocity -0.004248602723160731 0.0018650800047309228 0.0025377810927150377
+}
+DEF customer_1 Solid {
+  translation -11.5 1.0284006223163313 -23080.88306928108
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.78 0.26
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.3 0.1
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_1(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_2 Solid {
+  translation -11.5 -1.4767703986522807 -23038.193188514844
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.26 1 1
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.96 0.96
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.4 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_2(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_3 Solid {
+  translation -11.5 -1.5569688791453444 -22995.503307748608
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.78 0.26 1
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.72 0.24 0.96
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.6 0.2 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.6 0.2 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.6 0.2 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.3 0.1 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.08000000000000002 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.08000000000000002 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_3(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_4 Solid {
+  translation -11.5 -0.6630844017475073 -22952.81342698237
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.26 0.52 1
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.48 0.96
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.2 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_4(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_5 Solid {
+  translation -11.5 0.20182019334004853 -22910.123546216135
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.52 0.78
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.48 0.72
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.2 0.3
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_5(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_6 Solid {
+  translation -11.5 -0.19740487347908964 -22867.4336654499
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.26 1 1
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.96 0.96
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.4 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_6(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_7 Solid {
+  translation -11.5 -1.1411346282744672 -22824.743784683662
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.52 0.78
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.48 0.72
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.2 0.3
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_7(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_8 Solid {
+  translation -11.5 -0.24963375440473667 -22782.053903917425
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.26 0.52 1
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.48 0.96
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.2 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_8(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_9 Solid {
+  translation -11.5 1.4729979949062075 -22739.36402315119
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.78 0.26
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.3 0.1
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_9(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_10 Solid {
+  translation -11.5 1.4596722373635416 -22696.674142384953
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.78 0.26
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.3 0.1
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_10(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_11 Solid {
+  translation -11.5 -1.2739974975628985 -22653.984261618716
+  children [
+    Pose {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.26 0.52 1
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.48 0.96
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.2 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_11(1)"
+  boundingObject Group {
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0 0 -14.113634616562539
+}
+DEF customer_1 Solid {
+  translation -11.500008622467064 -1.7701934221441626 0.2690770644605145
+  rotation 0.9999997306684246 -0.000502312638008233 -0.0005351122237397832 1.5688141930170216
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.96 0.96
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.22000000000000003 0.8800000000000001 0.8800000000000001
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.4 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_1(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -1.3095662770323923e-06 1.1036648664979119e-05 1.3166125751606773e-06
+  angularVelocity 1.7834591962759355e-05 -7.385909858713849e-06 -5.4789391004371346e-09
+}
+DEF customer_2 Solid {
+  translation -11.499999787425224 -1.9847508868914432 0.07939652174159903
+  rotation 0.9999999999885713 3.500220422016283e-06 -3.256639959773373e-06 1.5637825553818792
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.48 0.96 0.24
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.44000000000000006 0.8800000000000001 0.22000000000000003
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.8 0.2
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.8 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.8 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.1
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.16000000000000003 0.32000000000000006 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.16000000000000003 0.32000000000000006 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_2(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -3.0519728428281943e-07 -1.663956022864851e-06 -5.016612990794079e-07
+  angularVelocity 1.469889924509673e-05 -3.263855556816939e-06 -6.568168878465914e-09
+}
+DEF customer_3 Solid {
+  translation -11.49997434597414 -1.9945993053455047 0.4641498733543925
+  rotation 0.9999996890500682 0.0005862047260953328 0.0005275071429940013 1.575729855839109
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.48 0.72
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8800000000000001 0.44000000000000006 0.66
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.2 0.3
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_3(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -3.13306238891525e-06 1.2384145022865044e-06 -3.321761503436983e-06
+  angularVelocity 2.5327883362485018e-05 -1.2127774332183653e-05 5.986898145347593e-08
+}
+DEF customer_4 Solid {
+  translation -11.500171655440829 1.2913057247693298 0.44281204434413807
+  rotation -0.9995130464687676 -0.02269235303476428 -0.021417914288485808 0.017557533424720117
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.48 0.72
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8800000000000001 0.44000000000000006 0.66
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.2 0.3
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_4(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 2.8742307378005016e-06 0.0007010212293209111 0.000160856036345043
+  angularVelocity 0.0011752374797514905 6.026989282049841e-06 -1.0413311511436528e-05
+}
+DEF customer_5 Solid {
+  translation -12.112765655793378 0.1863696550823323 0.4431330001407724
+  rotation 5.271044342145194e-05 0.94483980865828 0.3275327971305992 3.159499875035599e-05
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8800000000000001 0.66 0.22000000000000003
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.3 0.1
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_5(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 0.00031667128233427453 3.78346025357979e-08 -1.2074888471274108e-08
+  angularVelocity -8.405389722680419e-08 0.000702723785199692 1.8360173721591235e-12
+}
+DEF customer_6 Solid {
+  translation -11.500086108874893 2.144630344906609 0.07936471798651197
+  rotation 0.9999999391974242 7.423119393988447e-05 -0.0003407269843107258 1.597035984174747
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.48 0.72
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8800000000000001 0.44000000000000006 0.66
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.4 0.6
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.2 0.3
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.16000000000000003 0.24
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_6(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 1.0948765768065497e-06 -5.729621923364266e-07 1.1585573727090154e-05
+  angularVelocity 5.702799201944773e-05 1.259751596260289e-05 1.4395789420669288e-07
+}
+DEF customer_7 Solid {
+  translation -11.501588915048341 1.0962701781532702 0.44299148807530714
+  rotation -0.9965295932008462 0.07579380847067929 -0.03441029602409777 0.007170105284160982
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8800000000000001 0.66 0.22000000000000003
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.3 0.1
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_7(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 2.475248257853512e-07 -8.442166389925211e-05 4.314205559643213e-05
+  angularVelocity -0.0004931499287729755 -1.5638418269443402e-06 -1.2388488711271588e-05
+}
+DEF customer_8 Solid {
+  translation -12.185637476890733 0.4633357215406798 0.4381831296404683
+  rotation 0.09143670524996546 -0.9764126589249651 -0.19559562475707554 0.07230939389164294
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.96 0.96
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.22000000000000003 0.8800000000000001 0.8800000000000001
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.4 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_8(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.00014996157185280344 0.0002892372925934621 -0.00016450553476154116
+  angularVelocity -0.0005680709912316415 0.004114501261997347 -1.6177170923591447e-05
+}
+DEF customer_9 Solid {
+  translation -11.908075833049757 0.444499728226671 0.839559598795874
+  rotation -0.21607695578947633 -0.9531340263946702 -0.21176939558263985 0.039573656766366594
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.48 0.96
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.22000000000000003 0.44000000000000006 0.8800000000000001
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.4 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.2 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.16000000000000003 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_9(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity -0.002070898539154234 -0.0003060822525159106 -0.0021564285371429514
+  angularVelocity 0.0009678021418565412 -0.004369231040085118 -0.001107549509736694
+}
+DEF customer_10 Solid {
+  translation -11.499646358083119 1.9195420500086515 0.25627203795498327
+  rotation -0.9999998713096784 0.0004578905224527101 0.00021844197499604163 1.5124853175975048
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.96 0.72 0.24
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8800000000000001 0.66 0.22000000000000003
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.6 0.2
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.4 0.3 0.1
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.32000000000000006 0.24 0.08000000000000002
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_10(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 6.4706922898157936e-06 -0.0002170595136614923 -1.2071796041135617e-05
+  angularVelocity 0.0002056140060096452 2.000103203293578e-05 4.020837103233982e-06
+}
+DEF customer_11 Solid {
+  translation -11.499444668499223 1.6028183290952132 0.7817021528056759
+  rotation 0.999956840614114 0.008779302662141454 -0.003039860820106242 0.08413093002383458
+  children [
+    Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.24 0.96 0.96
+            roughness 0.6
+            metalness 0.1
+          }
+          geometry Sphere {
+            radius 0.12
+            subdivision 2
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.6
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.22000000000000003 0.8800000000000001 0.8800000000000001
+            roughness 0.7
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.05
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.4
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+            metalness 0.05
+          }
+          geometry Box {
+            size 0.3 0.2 0.4
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.12 0.45
+      rotation 1 0 0 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.12 0.45
+      rotation 1 0 0 -0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.8 0.8
+            roughness 0.8
+          }
+          geometry Cylinder {
+            height 0.35
+            radius 0.04
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.4 0.4
+            roughness 0.9
+          }
+          geometry Box {
+            size 0.25 0.18 0.12
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0 -0.06 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08000000000000002 0.32000000000000006 0.32000000000000006
+            roughness 0.9
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.055
+            subdivision 8
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.08 -0.06 -0.19
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.2
+            roughness 0.95
+          }
+          geometry Box {
+            size 0.18 0.08 0.06
+          }
+        }
+      ]
+    }
+  ]
+  name "customer_11(2)"
+  boundingObject Box {
+    size 0.3 0.2 0.9
+  }
+  physics Physics {
+    density -1
+    mass 70
+  }
+  linearVelocity 2.0642319805108664e-05 -0.0013247921841157881 -0.00016070417194553123
+  angularVelocity 0.002214605790510042 2.2926705126320004e-05 3.2623539492426042e-06
+}

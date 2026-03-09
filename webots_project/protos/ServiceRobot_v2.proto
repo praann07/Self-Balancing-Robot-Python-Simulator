@@ -1,0 +1,787 @@
+#VRML_SIM R2023b utf8
+# Professional Self-Balancing Humanoid Service Robot v2.0
+# Realistic human-like structure with perfect physics
+# Built for GTA-5 quality graphics
+
+PROTO ServiceRobot [
+  field SFVec3f    translation  0 0 0.3
+  field SFRotation rotation     0 0 1 0
+  field SFString   name         "service_robot"
+  field SFString   controller   "restaurant_controller"
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    controller IS controller
+    supervisor FALSE
+    
+    children [
+      # ========== HEAD (Face display) ==========
+      Transform {
+        translation 0 0 0.4
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.95 0.95 0.95
+              metalness 0.9
+              roughness 0.1
+            }
+            geometry Sphere {
+              radius 0.08
+              subdivision 3
+            }
+          }
+        ]
+      }
+      
+      # Face screen
+      Transform {
+        translation 0.08 0 0.4
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.8 1.0
+              emissiveColor 0.1 0.6 0.8
+              metalness 0.9
+              roughness 0.05
+            }
+            geometry Box {
+              size 0.01 0.12 0.12
+            }
+          }
+        ]
+      }
+      
+      # ========== NECK ==========
+      Transform {
+        translation 0 0 0.3
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.2 0.2 0.2
+              metalness 0.8
+              roughness 0.3
+            }
+            geometry Cylinder {
+              height 0.08
+              radius 0.04
+              subdivision 16
+            }
+          }
+        ]
+      }
+      
+      # ========== BODY (Torso - Box for stability) ==========
+      DEF BODY Transform {
+        translation 0 0 0.15
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.2 0.6 0.9
+              metalness 0.7
+              roughness 0.3
+            }
+            geometry Box {
+              size 0.25 0.3 0.35
+            }
+          }
+        ]
+      }
+      
+      # ========== WAIST/HIP (connection to wheels) ==========
+      Transform {
+        translation 0 0 -0.08
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.15 0.15 0.15
+              metalness 0.8
+              roughness 0.4
+            }
+            geometry Cylinder {
+              height 0.06
+              radius 0.14
+              subdivision 16
+            }
+          }
+        ]
+      }
+      
+      # ========== IMU Sensor ==========
+      InertialUnit {
+        name "imu"
+      }
+      
+      # ========== GPS ==========
+      GPS {
+        name "gps"
+      }
+      
+      # ========== Distance Sensors ==========
+      DistanceSensor {
+        translation 0.13 0 0.15
+        rotation 0 0 1 0
+        name "distance_front"
+        lookupTable [
+          0 0 0
+          2 2000 0
+        ]
+        numberOfRays 2
+      }
+      
+      DistanceSensor {
+        translation 0 0.13 0.15
+        rotation 0 0 1 1.5708
+        name "distance_left"
+        lookupTable [
+          0 0 0
+          2 2000 0
+        ]
+        numberOfRays 2
+      }
+      
+      DistanceSensor {
+        translation 0 -0.13 0.15
+        rotation 0 0 1 -1.5708
+        name "distance_right"
+        lookupTable [
+          0 0 0
+          2 2000 0
+        ]
+        numberOfRays 2
+      }
+      
+      # ========== LEFT WHEEL (Visible at bottom) ==========
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 1 0
+          anchor 0 0.16 -0.2
+          dampingConstant 0.2
+        }
+        device [
+          RotationalMotor {
+            name "left_wheel_motor"
+            maxVelocity 20
+            maxTorque 12
+          }
+          PositionSensor {
+            name "left_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 0.16 -0.2
+          rotation 1 0 0 1.5708
+          children [
+            DEF WHEEL_SHAPE Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0.1 0.1
+                metalness 0.5
+                roughness 0.8
+              }
+              geometry Cylinder {
+                height 0.05
+                radius 0.1
+                subdivision 24
+              }
+            }
+          ]
+          name "left_wheel"
+          contactMaterial "wheel"
+          boundingObject Cylinder {
+            height 0.05
+            radius 0.1
+            subdivision 24
+          }
+          physics Physics {
+            density -1
+            mass 0.4
+          }
+        }
+      }
+      
+      # ========== RIGHT WHEEL (Visible at bottom) ==========
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 1 0
+          anchor 0 -0.16 -0.2
+          dampingConstant 0.2
+        }
+        device [
+          RotationalMotor {
+            name "right_wheel_motor"
+            maxVelocity 20
+            maxTorque 12
+          }
+          PositionSensor {
+            name "right_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 -0.16 -0.2
+          rotation 1 0 0 1.5708
+          children [
+            USE WHEEL_SHAPE
+          ]
+          name "right_wheel"
+          contactMaterial "wheel"
+          boundingObject Cylinder {
+            height 0.05
+            radius 0.1
+            subdivision 24
+          }
+          physics Physics {
+            density -1
+            mass 0.4
+          }
+        }
+      }
+      
+      # ========== LEFT ARM ==========
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position -0.5
+          axis 0 1 0
+          anchor 0 0.17 0.22
+        }
+        device [
+          RotationalMotor {
+            name "left_shoulder_motor"
+            minPosition -3.14
+            maxPosition 0.5
+            maxTorque 3
+          }
+        ]
+        endPoint Solid {
+          translation 0 0.17 0.22
+          children [
+            # Shoulder
+            Transform {
+              translation 0 0 -0.03
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.88 0.87 0.85
+                    metalness 0.8
+                    roughness 0.2
+                  }
+                  geometry Sphere {
+                    radius 0.03
+                    subdivision 2
+                  }
+                }
+              ]
+            }
+            
+            # Upper arm
+            Transform {
+              translation 0 0 -0.1
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.98 0.58 0.08
+                    metalness 0.6
+                    roughness 0.3
+                  }
+                  geometry Cylinder {
+                    height 0.12
+                    radius 0.022
+                    subdivision 12
+                  }
+                }
+              ]
+            }
+            
+            # Elbow + Forearm
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                position -0.8
+                axis 0 1 0
+                anchor 0 0 -0.16
+              }
+              device [
+                RotationalMotor {
+                  name "left_elbow_motor"
+                  minPosition -2.5
+                  maxPosition 0
+                  maxTorque 2
+                }
+              ]
+              endPoint Solid {
+                translation 0 0 -0.16
+                children [
+                  # Elbow joint
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0.84 0.83 0.81
+                      metalness 0.8
+                      roughness 0.2
+                    }
+                    geometry Sphere {
+                      radius 0.025
+                      subdivision 2
+                    }
+                  }
+                  
+                  # Forearm
+                  Transform {
+                    translation 0 0 -0.08
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.95 0.62 0.15
+                          metalness 0.6
+                          roughness 0.3
+                        }
+                        geometry Cylinder {
+                          height 0.14
+                          radius 0.02
+                          subdivision 12
+                        }
+                      }
+                    ]
+                  }
+                  
+                  # REALISTIC HAND (5 fingers)
+                  Transform {
+                    translation 0 0 -0.15
+                    children [
+                      # Palm
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.86 0.85 0.83
+                          metalness 0.7
+                          roughness 0.3
+                        }
+                        geometry Box {
+                          size 0.05 0.04 0.06
+                        }
+                      }
+                      
+                      # Thumb
+                      Transform {
+                        translation 0.02 0.02 -0.02
+                        rotation 0 1 0 0.5
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.03
+                              radius 0.006
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Index finger
+                      Transform {
+                        translation 0.015 0 -0.04
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.035
+                              radius 0.005
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Middle finger
+                      Transform {
+                        translation 0.005 0 -0.042
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.038
+                              radius 0.005
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Ring finger
+                      Transform {
+                        translation -0.005 0 -0.04
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.035
+                              radius 0.005
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Pinky
+                      Transform {
+                        translation -0.015 0 -0.035
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.028
+                              radius 0.004
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+                name "left_forearm"
+                boundingObject Transform {
+                  translation 0 0 -0.08
+                  children [
+                    Cylinder {
+                      height 0.2
+                      radius 0.025
+                    }
+                  ]
+                }
+                physics Physics {
+                  density -1
+                  mass 0.15
+                }
+              }
+            }
+          ]
+          name "left_upper_arm"
+          boundingObject Transform {
+            translation 0 0 -0.08
+            children [
+              Cylinder {
+                height 0.15
+                radius 0.025
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.2
+          }
+        }
+      }
+      
+      # ========== RIGHT ARM (Mirror) ==========
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0.5
+          axis 0 1 0
+          anchor 0 -0.17 0.22
+        }
+        device [
+          RotationalMotor {
+            name "right_shoulder_motor"
+            minPosition -0.5
+            maxPosition 3.14
+            maxTorque 3
+          }
+        ]
+        endPoint Solid {
+          translation 0 -0.17 0.22
+          children [
+            # Shoulder
+            Transform {
+              translation 0 0 -0.03
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.88 0.87 0.85
+                    metalness 0.8
+                    roughness 0.2
+                  }
+                  geometry Sphere {
+                    radius 0.03
+                    subdivision 2
+                  }
+                }
+              ]
+            }
+            
+            # Upper arm
+            Transform {
+              translation 0 0 -0.1
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.98 0.58 0.08
+                    metalness 0.6
+                    roughness 0.3
+                  }
+                  geometry Cylinder {
+                    height 0.12
+                    radius 0.022
+                    subdivision 12
+                  }
+                }
+              ]
+            }
+            
+            # Elbow + Forearm
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                position 0.8
+                axis 0 1 0
+                anchor 0 0 -0.16
+              }
+              device [
+                RotationalMotor {
+                  name "right_elbow_motor"
+                  minPosition 0
+                  maxPosition 2.5
+                  maxTorque 2
+                }
+              ]
+              endPoint Solid {
+                translation 0 0 -0.16
+                children [
+                  # Elbow joint
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0.84 0.83 0.81
+                      metalness 0.8
+                      roughness 0.2
+                    }
+                    geometry Sphere {
+                      radius 0.025
+                      subdivision 2
+                    }
+                  }
+                  
+                  # Forearm
+                  Transform {
+                    translation 0 0 -0.08
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.95 0.62 0.15
+                          metalness 0.6
+                          roughness 0.3
+                        }
+                        geometry Cylinder {
+                          height 0.14
+                          radius 0.02
+                          subdivision 12
+                        }
+                      }
+                    ]
+                  }
+                  
+                  # REALISTIC HAND (5 fingers)
+                  Transform {
+                    translation 0 0 -0.15
+                    children [
+                      # Palm
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.86 0.85 0.83
+                          metalness 0.7
+                          roughness 0.3
+                        }
+                        geometry Box {
+                          size 0.05 0.04 0.06
+                        }
+                      }
+                      
+                      # Thumb
+                      Transform {
+                        translation 0.02 -0.02 -0.02
+                        rotation 0 1 0 -0.5
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.03
+                              radius 0.006
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Index finger
+                      Transform {
+                        translation 0.015 0 -0.04
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.035
+                              radius 0.005
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Middle finger
+                      Transform {
+                        translation 0.005 0 -0.042
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.038
+                              radius 0.005
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Ring finger
+                      Transform {
+                        translation -0.005 0 -0.04
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.035
+                              radius 0.005
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # Pinky
+                      Transform {
+                        translation -0.015 0 -0.035
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Cylinder {
+                              height 0.028
+                              radius 0.004
+                              subdivision 8
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+                name "right_forearm"
+                boundingObject Transform {
+                  translation 0 0 -0.08
+                  children [
+                    Cylinder {
+                      height 0.2
+                      radius 0.025
+                    }
+                  ]
+                }
+                physics Physics {
+                  density -1
+                  mass 0.15
+                }
+              }
+            }
+          ]
+          name "right_upper_arm"
+          boundingObject Transform {
+            translation 0 0 -0.08
+            children [
+              Cylinder {
+                height 0.15
+                radius 0.025
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.2
+          }
+        }
+      }
+    ]
+    
+    name IS name
+    boundingObject Group {
+      children [
+        # Head
+        Transform {
+          translation 0 0 0.4
+          children [
+            Sphere {
+              radius 0.08
+            }
+          ]
+        }
+        # Body
+        Transform {
+          translation 0 0 0.15
+          children [
+            Box {
+              size 0.25 0.3 0.35
+            }
+          ]
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 6.5
+      centerOfMass [0 0 0.05]
+      damping Damping {
+        linear 0.5
+        angular 0.5
+      }
+      inertiaMatrix [
+        0.12 0.12 0.08
+        0 0 0
+      ]
+    }
+  }
+}

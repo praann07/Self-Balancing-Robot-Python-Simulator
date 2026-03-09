@@ -1,0 +1,148 @@
+#VRML_SIM R2025a utf8
+# Minimal two-wheeled self-balancing robot for testing balance physics
+# Just a box body + 2 wheels + sensors. NO arms, NO head, NO decorations.
+
+PROTO BalanceTestBot [
+  field SFVec3f    translation  0 0 0.22
+  field SFRotation rotation     0 0 1 0
+  field SFString   name         "balance_bot"
+  field SFString   controller   "balance_test"
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    controller IS controller
+    children [
+      # Body — a simple box centered at z=0
+      Shape {
+        appearance PBRAppearance {
+          baseColor 0.9 0.9 0.95
+          metalness 0.1
+          roughness 0.4
+        }
+        geometry Box {
+          size 0.15 0.2 0.2
+        }
+      }
+
+      # ===== SENSORS =====
+      InertialUnit {
+        name "imu"
+      }
+      GPS {
+        name "gps"
+      }
+      Accelerometer {
+        name "accelerometer"
+      }
+      Gyro {
+        name "gyro"
+      }
+
+      # ===== LEFT WHEEL =====
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 1 0
+          anchor 0 0.11 -0.1
+        }
+        device [
+          RotationalMotor {
+            name "left_wheel_motor"
+            maxVelocity 30
+            maxTorque 10
+          }
+          PositionSensor {
+            name "left_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 0.11 -0.1
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0.1 0.1
+                roughness 0.9
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.1
+                subdivision 24
+              }
+            }
+          ]
+          name "left_wheel"
+          contactMaterial "wheel"
+          boundingObject Cylinder {
+            height 0.03
+            radius 0.1
+          }
+          physics Physics {
+            density -1
+            mass 0.3
+          }
+        }
+      }
+
+      # ===== RIGHT WHEEL =====
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 1 0
+          anchor 0 -0.11 -0.1
+        }
+        device [
+          RotationalMotor {
+            name "right_wheel_motor"
+            maxVelocity 30
+            maxTorque 10
+          }
+          PositionSensor {
+            name "right_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 -0.11 -0.1
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0.1 0.1
+                roughness 0.9
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.1
+                subdivision 24
+              }
+            }
+          ]
+          name "right_wheel"
+          contactMaterial "wheel"
+          boundingObject Cylinder {
+            height 0.03
+            radius 0.1
+          }
+          physics Physics {
+            density -1
+            mass 0.3
+          }
+        }
+      }
+    ]
+
+    # Simple box bounding object
+    boundingObject Box {
+      size 0.15 0.2 0.2
+    }
+
+    physics Physics {
+      density -1
+      mass 2.0
+      centerOfMass [0 0 0]
+    }
+  }
+}

@@ -1,0 +1,668 @@
+#VRML_SIM R2023b utf8
+# Self-Balancing Service Robot with Articulated Arms and Hands
+# Professional restaurant food delivery robot
+
+PROTO ServiceRobot [
+  field SFVec3f    translation  0 0 0.25
+  field SFRotation rotation     0 0 1 0
+  field SFString   name         "service_robot"
+  field SFString   controller   "self_balancing_robot"
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    controller IS controller
+    supervisor FALSE
+    
+    children [
+      # ========== Main Body (Cylindrical torso) ==========
+      DEF BODY Transform {
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.2 0.6 0.9
+              metalness 0.7
+              roughness 0.3
+            }
+            geometry Cylinder {
+              height 0.5
+              radius 0.15
+            }
+          }
+        ]
+      }
+      
+      # ========== Robot Face (on front of body) ==========
+      Transform {
+        translation 0.17 0 0.15
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              metalness 0.9
+              roughness 0.1
+            }
+            geometry Box {
+              size 0.02 0.2 0.15
+            }
+          }
+        ]
+      }
+      
+      # ========== IMU Sensor (for tilt detection) ==========
+      DEF IMU InertialUnit {
+        name "imu"
+      }
+      
+      # ========== GPS (for position tracking) ==========
+      DEF GPS GPS {
+        name "gps"
+      }
+      
+      # ========== Distance Sensors (for obstacle detection) ==========
+      DEF DISTANCE_FRONT DistanceSensor {
+        translation 0.17 0 0
+        rotation 0 0 1 0
+        name "distance_front"
+        lookupTable [
+          0 0 0
+          2 2000 0
+        ]
+      }
+      
+      DEF DISTANCE_LEFT DistanceSensor {
+        translation 0 0.17 0
+        rotation 0 0 1 1.5708
+        name "distance_left"
+        lookupTable [
+          0 0 0
+          2 2000 0
+        ]
+      }
+      
+      DEF DISTANCE_RIGHT DistanceSensor {
+        translation 0 -0.17 0
+        rotation 0 0 1 -1.5708
+        name "distance_right"
+        lookupTable [
+          0 0 0
+          2 2000 0
+        ]
+      }
+      
+      # ========== Left Wheel ==========
+      DEF LEFT_WHEEL HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 1 0
+          anchor 0 0.18 -0.25
+        }
+        device [
+          RotationalMotor {
+            name "left_wheel_motor"
+            maxVelocity 20
+            maxTorque 10
+          }
+          PositionSensor {
+            name "left_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 -0.25 0.18
+          rotation 1 0 0 1.5708
+          children [
+            DEF WHEEL_SHAPE Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0.1 0.1
+                metalness 0.3
+                roughness 0.7
+              }
+              geometry Cylinder {
+                height 0.05
+                radius 0.1
+              }
+            }
+          ]
+          name "left_wheel"
+          boundingObject USE WHEEL_SHAPE
+          physics Physics {
+            density -1
+            mass 0.5
+          }
+        }
+      }
+      
+      # ========== Right Wheel ==========
+      DEF RIGHT_WHEEL HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 0 1
+          anchor 0 -0.25 -0.18
+        }
+        device [
+          RotationalMotor {
+            name "right_wheel_motor"
+            maxVelocity 20
+            maxTorque 10
+          }
+          PositionSensor {
+            name "right_wheel_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0 -0.25 -0.18
+          rotation 1 0 0 1.5708
+          children [
+            USE WHEEL_SHAPE
+          ]
+          name "right_wheel"
+          boundingObject USE WHEEL_SHAPE
+          physics Physics {
+            density -1
+            mass 0.5
+          }
+        }
+      }
+      
+      # ========== Left Arm ==========
+      DEF LEFT_ARM HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 0 1
+          anchor 0.1 0.17 0.2
+        }
+        device [
+          RotationalMotor {
+            name "left_shoulder_motor"
+            minPosition -3.14
+            maxPosition 3.14
+            maxTorque 5
+          }
+        ]
+        endPoint Solid {
+          translation 0.1 0.17 0.2
+          children [
+            # Shoulder joint
+            DEF SHOULDER_JOINT Shape {
+              appearance PBRAppearance {
+                baseColor 0.88 0.87 0.85
+                metalness 0.8
+                roughness 0.2
+              }
+              geometry Sphere {
+                radius 0.03
+              }
+            }
+            
+            # Upper arm (orange)
+            Transform {
+              translation 0.1 0 0
+              rotation 0 0 1 1.5708
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.98 0.58 0.08
+                    metalness 0.6
+                    roughness 0.3
+                  }
+                  geometry Cylinder {
+                    height 0.15
+                    radius 0.025
+                  }
+                }
+              ]
+            }
+            
+            # Elbow joint with forearm
+            DEF LEFT_ELBOW HingeJoint {
+              jointParameters HingeJointParameters {
+                position 0
+                axis 0 0 1
+                anchor 0.15 0 0
+              }
+              device [
+                RotationalMotor {
+                  name "left_elbow_motor"
+                  minPosition -2.5
+                  maxPosition 0
+                  maxTorque 3
+                }
+              ]
+              endPoint Solid {
+                translation 0.15 0 0
+                children [
+                  # Elbow sphere
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0.84 0.83 0.81
+                      metalness 0.8
+                      roughness 0.2
+                    }
+                    geometry Sphere {
+                      radius 0.025
+                    }
+                  }
+                  
+                  # Forearm (yellow-orange)
+                  Transform {
+                    translation 0.09 0 0
+                    rotation 0 0 1 1.5708
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 1.0 0.78 0.22
+                          metalness 0.6
+                          roughness 0.3
+                        }
+                        geometry Cylinder {
+                          height 0.13
+                          radius 0.02
+                        }
+                      }
+                    ]
+                  }
+                  
+                  # Wrist and Hand
+                  Transform {
+                    translation 0.16 0 0
+                    children [
+                      # Wrist sphere
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.84 0.83 0.81
+                          metalness 0.8
+                          roughness 0.2
+                        }
+                        geometry Sphere {
+                          radius 0.02
+                        }
+                      }
+                      
+                      # Palm
+                      Transform {
+                        translation 0.03 0 0
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.88 0.87 0.85
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.04 0.03 0.025
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # 5 Fingers (simplified)
+                      Transform {
+                        translation 0.05 0.008 0.008
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.02 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 0.004 0.004
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.025 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 0 0
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.025 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 -0.004 -0.004
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.025 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 -0.008 -0.008
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.02 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+                name "left_forearm"
+                boundingObject Transform {
+                  translation 0.09 0 0
+                  children [
+                    Cylinder {
+                      height 0.13
+                      radius 0.02
+                    }
+                  ]
+                }
+                physics Physics {
+                  density -1
+                  mass 0.1
+                }
+              }
+            }
+          ]
+          name "left_upper_arm"
+          boundingObject Transform {
+            translation 0.1 0 0
+            rotation 0 0 1 1.5708
+            children [
+              Cylinder {
+                height 0.15
+                radius 0.025
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.15
+          }
+        }
+      }
+      
+      # ========== Right Arm (mirror of left) ==========
+      DEF RIGHT_ARM HingeJoint {
+        jointParameters HingeJointParameters {
+          position 0
+          axis 0 0 1
+          anchor 0.1 -0.17 0.2
+        }
+        device [
+          RotationalMotor {
+            name "right_shoulder_motor"
+            minPosition -3.14
+            maxPosition 3.14
+            maxTorque 5
+          }
+        ]
+        endPoint Solid {
+          translation 0.1 -0.17 0.2
+          children [
+            USE SHOULDER_JOINT
+            
+            Transform {
+              translation 0.1 0 0
+              rotation 0 0 1 1.5708
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.98 0.58 0.08
+                    metalness 0.6
+                    roughness 0.3
+                  }
+                  geometry Cylinder {
+                    height 0.15
+                    radius 0.025
+                  }
+                }
+              ]
+            }
+            
+            DEF RIGHT_ELBOW HingeJoint {
+              jointParameters HingeJointParameters {
+                position 0
+                axis 0 0 1
+                anchor 0.15 0 0
+              }
+              device [
+                RotationalMotor {
+                  name "right_elbow_motor"
+                  minPosition -2.5
+                  maxPosition 0
+                  maxTorque 3
+                }
+              ]
+              endPoint Solid {
+                translation 0.15 0 0
+                children [
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0.84 0.83 0.81
+                      metalness 0.8
+                      roughness 0.2
+                    }
+                    geometry Sphere {
+                      radius 0.025
+                    }
+                  }
+                  
+                  Transform {
+                    translation 0.09 0 0
+                    rotation 0 0 1 1.5708
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 1.0 0.78 0.22
+                          metalness 0.6
+                          roughness 0.3
+                        }
+                        geometry Cylinder {
+                          height 0.13
+                          radius 0.02
+                        }
+                      }
+                    ]
+                  }
+                  
+                  Transform {
+                    translation 0.16 0 0
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.84 0.83 0.81
+                          metalness 0.8
+                          roughness 0.2
+                        }
+                        geometry Sphere {
+                          radius 0.02
+                        }
+                      }
+                      
+                      Transform {
+                        translation 0.03 0 0
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.88 0.87 0.85
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.04 0.03 0.025
+                            }
+                          }
+                        ]
+                      }
+                      
+                      # 5 fingers (same as left)
+                      Transform {
+                        translation 0.05 0.008 -0.008
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.02 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 0.004 -0.004
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.025 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 0 0
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.025 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 -0.004 0.004
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.025 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.05 -0.008 0.008
+                        children [
+                          Shape {
+                            appearance PBRAppearance {
+                              baseColor 0.86 0.85 0.83
+                              metalness 0.7
+                              roughness 0.3
+                            }
+                            geometry Box {
+                              size 0.02 0.005 0.003
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+                name "right_forearm"
+                boundingObject Transform {
+                  translation 0.09 0 0
+                  children [
+                    Cylinder {
+                      height 0.13
+                      radius 0.02
+                    }
+                  ]
+                }
+                physics Physics {
+                  density -1
+                  mass 0.1
+                }
+              }
+            }
+          ]
+          name "right_upper_arm"
+          boundingObject Transform {
+            translation 0.1 0 0
+            rotation 0 0 1 1.5708
+            children [
+              Cylinder {
+                height 0.15
+                radius 0.025
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.15
+          }
+        }
+      }
+    ]
+    
+    name IS name
+    boundingObject Transform {
+      rotation 1 0 0 1.5708
+      children [
+        Cylinder {
+          height 0.5
+          radius 0.15
+        }
+      ]
+    }
+    physics Physics {
+      density -1
+      mass 8
+      centerOfMass [0 0 -0.1]
+      damping Damping {
+        linear 0.5
+        angular 0.5
+      }
+      inertiaMatrix [
+        0.1 0.05 0.1
+        0 0 0
+      ]
+    }
+  }
+}
