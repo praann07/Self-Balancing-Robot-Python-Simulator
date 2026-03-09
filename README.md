@@ -1,55 +1,121 @@
-# Self-Balancing-Robot-Python-Simulator
+# Self-Balancing Robot Python Simulator
 
-A professional self-balancing two-wheeled restaurant service robot simulator with two versions:
-1. **OpenGL Simulator** (src/) - Fast custom 3D visualization
-2. **Webots Simulator** (webots_project/) - Professional physics engine (NEW! ⭐)
+A self-balancing two-wheeled robot simulator built with Python, featuring two simulation environments: a custom OpenGL 3D renderer and a professional Webots physics engine. The robot models a real inverted pendulum system controlled by cascaded PID controllers.
 
 ---
 
-## 🎉 NEW: Webots Professional Simulator
+## Overview
 
-A complete Webots implementation with realistic physics, collision detection, and autonomous food delivery!
+This project simulates a self-balancing service robot operating in a restaurant environment. It demonstrates control theory concepts (PID), rigid body dynamics (Runge-Kutta), and 3D visualization — all in Python.
 
-**Quick Start:**
-1. Install [Webots](https://cyberbotics.com/) (free)
-2. Run: `webots_project\launch_webots.bat`
-3. Or open: `webots_project\worlds\restaurant_service.wbt` in Webots
+Two simulation backends are provided:
 
-**Features:**
-- ✅ Real physics engine (ODE)
-- ✅ Professional robot model with arms and hands
-- ✅ Realistic collision detection
-- ✅ Autonomous navigation to tables
-- ✅ Automatic food delivery system
-- ✅ Distance sensors for obstacle avoidance
-
-See [webots_project/README.md](webots_project/README.md) for full documentation.
+| Simulator | Description |
+|-----------|-------------|
+| **OpenGL** (`self_balancing_robot/`) | Lightweight custom 3D renderer using PyOpenGL |
+| **Webots** (`webots_project/`) | Professional physics engine with realistic collision detection |
 
 ---
 
-## OpenGL Simulator (Original)
+## Features
 
-Here is presented a source code to simulate a self balancing two wheeled robot with python and using OpenGL to display the simulated robot.
+- Inverted pendulum mathematical model with Runge-Kutta ODE solver
+- Cascaded PID control: pendulum angle, linear speed, and angular rotation
+- Interactive 3D visualization with day/night cycle and camera controls
+- Restaurant environment with tables and autonomous food delivery
+- Obstacle detection and avoidance
+- Arduino code included for real hardware deployment
 
-This simulator has three files:
+---
 
-    ibalancingbot.py that provides a class IBallancingBot that deals with the mathematical model of the robot and with the resolution of the differencial equations.
+## Project Structure
 
-    pid.py that provides a PID class to be able to control the robot.
+```
+Self-Balancing-Robot-Python-Simulator/
+├── self_balancing_robot/       # OpenGL simulator
+│   ├── main.py                 # Entry point, OpenGL rendering loop
+│   ├── iballancingbot.py       # Robot dynamics and Runge-Kutta solver
+│   └── pid.py                  # Discrete PID controller
+├── webots_project/             # Webots simulator
+│   ├── controllers/            # Robot and supervisor controllers
+│   ├── protos/                 # Custom robot 3D models
+│   └── worlds/                 # Simulation world files
+├── Arduino_code/               # Firmware for physical robot hardware
+└── pid.mlx                     # MATLAB PID tuning script
+```
 
-    main.py that uses OpenGL to display the robot and provides the menu to use the simulation
+---
 
-Note that it is based on python 3.
+## Getting Started
 
-## iballancingbot.py files
+### OpenGL Simulator
 
-This file provides the IBalancingBot class. This class contains a mathematical model for the self balancing robot. This model is extract from the article 'A Comparison of Controllers for Balancing Two wheeled Inverted Pendulum Robot' available here.
-The IBalancingBot class uses a Runge-Kutta approach to compute the differential equations of the robot's dynamic.
+**Requirements:** Python 3.8+, PyOpenGL, numpy
 
-## pid.py file
+```bash
+pip install PyOpenGL PyOpenGL_accelerate numpy
+```
 
-This file provides a simple discrete PID class that is used to control the robot in the simulation. This implementation was found here. 
+Run the simulator:
 
-## main.py file
+```bash
+cd self_balancing_robot
+python main.py
+```
 
-This is the main file of the simulator. It uses OpenGL to display the state the IBalancingBot and uses PID to control the robot. It uses 3 PIDs : one for the pendulum angle, one for the linear speed and one for the angular rotation speed. The OpenGL part is based on a Jean-Baptiste Fasquel file (http://perso-laris.univ-angers.fr/~fasquel). 
+Or on Windows, double-click `quick_launch.bat`.
+
+### Webots Simulator
+
+1. Install [Webots](https://cyberbotics.com/) (free, open-source)
+2. Open `webots_project/worlds/restaurant_service.wbt` in Webots
+3. Or double-click `webots_project/launch_webots.bat`
+
+---
+
+## Controls (OpenGL Simulator)
+
+| Key | Action |
+|-----|--------|
+| W / X | Move forward / backward |
+| A / D | Turn left / right |
+| Q / Space | Stop |
+| M | Toggle delivery mode |
+| C | Toggle PID control |
+| O | Toggle obstacle detection |
+| F | Toggle follow camera |
+| R | Reset simulation |
+| Arrow Keys | Rotate / zoom camera |
+
+---
+
+## How It Works
+
+### Robot Model (`iballancingbot.py`)
+
+The physics are based on the mathematical model from *"A Comparison of Controllers for Balancing Two Wheeled Inverted Pendulum Robot"*. State equations are solved using a 4th-order Runge-Kutta method at each simulation step.
+
+### PID Controller (`pid.py`)
+
+Three PIDs run in cascade:
+- **Angle PID** — keeps the robot upright
+- **Speed PID** — controls linear velocity
+- **Rotation PID** — controls turning
+
+### Webots Controllers
+
+- `self_balancing_robot.py` — main balance controller
+- `restaurant_controller.py` — autonomous navigation and delivery logic
+- `restaurant_supervisor.py` — environment supervisor and state manager
+
+---
+
+## Arduino Hardware
+
+The `Arduino_code/` directory contains firmware to deploy the same PID control logic on actual hardware. The MATLAB script `pid.mlx` can be used to tune PID gains before flashing.
+
+---
+
+## License
+
+See [LICENSE](LICENSE) for details.
